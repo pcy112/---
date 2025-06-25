@@ -27,9 +27,14 @@ function popupPage() {
     }
 }
 function login(){
-    window.location.href = "https://dodam.b1nd.com/sign";
+    window.location.href = "login.html";
 }
 function signUp(){
-    window.location.href = "https://dodam.b1nd.com/sign";
+    window.location.href = "signup.html";
+}
+function logout(){
+    // 로그아웃 기능 구현
+    // 예를 들어, 세션 스토리지에서 사용자 정보를 제거하고 홈 페이지로 이동
+    window.location.href = "main.html"; // 홈 페이지로 이동
 }
 

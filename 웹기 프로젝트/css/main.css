@@ -1,54 +1,47 @@
-
-
 header {
-    position: relative;
-}
-
-.asdf {
-    position: static;           /* absolute 제거 */
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #fff;
-    border-radius: 8px;
-    padding: 4px 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    z-index: 2;
-    margin: 0 auto 16px auto;   /* 가운데 정렬 + 아래 여백 */
+    background: none !important;
+    background-color: transparent !important;
 }
 
 .header-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
-    padding: 16px 0 8px 0;
+    gap: 16px;
+    padding: 16px 24px;
+    flex-wrap: wrap;
 }
 
+/* 로고 */
 .logo-img {
-    width: 80px;
-    height: 60px;
-    margin: 0;
+    width: 70px;
+    height: 50px;
     border-radius: 8px;
     object-fit: cover;
+    cursor: pointer;
 }
 
+/* 검색창 */
 .search-form {
     flex: 1;
     display: flex;
     justify-content: center;
     gap: 8px;
+    max-width: 1000px;
 }
 
+/* 검색 입력창 */
 .search-form input[type="text"] {
-    width: 240px;
-    padding: 6px 12px;
+    width: 100%;
+    max-width: 280px;
+    padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
 }
 
+/* 검색 버튼 */
 .search-form button {
-    padding: 6px 16px;
+    padding: 8px 16px;
     border: none;
     border-radius: 6px;
     background: #6a0dad;
@@ -56,95 +49,173 @@ header {
     cursor: pointer;
 }
 
+/* 로그인/회원가입 버튼 */
 .auth-btns {
     display: flex;
     gap: 8px;
 }
 
+/* 로그인/회원가입 버튼 스타일 */
 .auth-btns button {
-    padding: 6px 16px;
+    padding: 8px 16px;
     border: none;
     border-radius: 6px;
     background: #8a2be2;
     color: #fff;
     cursor: pointer;
+    transition: 0.3s ease;
 }
 
+/* 로그인/회원가입 버튼 호버 효과 */
 .auth-btns button:hover {
-    background: rgb(89, 20, 142); /* 호버 시 더 밝은 배경 */
-    transform: scale(1.1);                /* 살짝 확대 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 */
+    background: #6a0dad;
+    transform: scale(1.05);
 }
 
+/* 네비게이션 바 */
 .navbar {
-    margin-top: 0; /* 네비게이션 바의 위쪽 여백 제거 */
-    height: 60px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(90deg, #6a0dad, #8a2be2);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 12px 0px;
+    border-top: 1.5px solid #d1c4e9;
+    border-bottom: 1.5px solid #d1c4e9;
 }
 
+/* 네비게이션 바 메뉴 */
 .navbar ul {
     display: flex;
-    flex-direction: row;             /* 가로로 나열 */
-    gap: 16px;                       /* 메뉴 간격 증가 */
-    margin: 0;
-    padding: 0;
+    gap: 32px;
     list-style: none;
-    align-items: center;             /* 세로 중앙 정렬 */
+    padding: 0;
+    margin: 0;
+}
+
+/* 네비게이션 바 링크 */
+.navbar a {
+    color: #222;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 10px 28px;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    background: rgba(255, 255, 255, 0.15);
+    font-family: "Grandiflora One", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .navbar li {
-    display: flex;                   
-    align-items: center;              /* 세로 중앙 정렬 */
-}
-
-.navbar a {
-    display: flex;                   /* a도 flex로 */
-    align-items: center;
-    justify-content: center;   /* 중앙 정렬 */
-    text-decoration: none; /* 밑줄 제거 */
-    color: #ffffff;                  /* 흰색 글자 */
-    font-size: 1em;                  /* 글자 크기 */
-    font-weight: 500;                /* 글자 두께 */
-    padding: 8px 120px;               /* 패딩 증가 */
-    border-radius: 8px;              /* 둥근 모서리 */
-    transition: all 0.3s ease;       /* 부드러운 전환 효과 */
-    background: rgba(255, 255, 255, 0.1);/*살짝 투명한 배경 */
+    cursor: pointer;
 }
 
 .navbar a:hover {
-    background: rgba(95, 88, 88, 0.235); /* 호버 시 더 밝은 배경 */
-    transform: scale(1.1);                /* 살짝 확대 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 */
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
 }
 
-p {
-    font-size: 20px;
+/* hero-title 문구 스타일 */
+.hero-title {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    margin-top: 8px;     /* 위쪽 여백 줄임 */
-    margin-bottom: 8px;  /* 아래쪽 여백 줄임 */
+    padding: 10px 0 20px 0;
+    margin-bottom: 24px;
 }
 
-h4{
+.hero-title h4 {
+    font-family: "Grandiflora One", "Sunflower", sans-serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #000000;
+    margin: 0;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 8px rgba(106,13,173,0.08);
+}
+
+.custom-row {
+    display: flex;
+    gap: 48px;
+    margin: 40px 0;
+    width: 100%;
+    max-width: 2500px;
+    box-sizing: border-box;
+}
+
+.img-wide {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: center;
-    font-size: 35px;
-    margin-top: 14px;
-    margin-bottom: 30px;
 }
 
-.d-img {
-    display: block;
-    margin: 24px auto 0 auto; /* 중앙 정렬 */
-    max-width: 100%;
-    height: auto;
+.img-wide img {
+    width: 100%;
+    max-width: 260px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.img-label {
+    margin-top: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #8f5eff;
+}
+
+.img-half-group {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* 위아래 간격 */
+    justify-content: flex-start;
+}
+
+.img-half {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px; /* 이미지와 설명문 사이 간격 */
+    margin-bottom: 2px; /* 2,3번 이미지 사이 간격을 아주 좁게 */
+}
+
+.img-half:last-child {
+    margin-bottom: 0;
+}
+
+.img-half + .img-half {
+    margin-top: 100px; /* 위아래 간격을 완전히 붙임 */
+}
+
+.img-wide img,
+.img-wide iframe {
+    width: 100%;
+    max-width: 320px;   /* 기존 400~700px에서 줄임 */
+    height: 200px;      /* 원하는 높이로 조절 */
     border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    object-fit: cover;
+}
+
+.img-half img {
+    width: 120px;       /* 기존 400px에서 줄임 */
+    height: 100px;      /* 기존 350px에서 줄임 */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin: 0;
+}
+
+.half-desc {
+    flex: 1;
+    font-size: 1rem;
+    color: #333;
+    margin-left: 12px;
 }
