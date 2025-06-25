@@ -15,7 +15,8 @@
                 <input type="text" placeholder="검색어를 입력하세요">
                 <button type="submit">검색</button>
             </form>
-            <div class="auth-btns">
+            <div class="auth-btns" id="auth-btns">
+                <!-- 로그인 상태에 따라 버튼이 변경됩니다. -->
                 <button type="button">회원가입</button>
                 <button type="button">로그인</button>
             </div>
@@ -27,8 +28,8 @@
                 <li><a href="#" onclick="secondPage()">나라별 문화 카드</a></li>
                 <li><a href="#" onclick="thirdPage()">나라별 퀴즈</a></li>
                 <li><a href="#" onclick="fourthPage()">만남의 광장</a></li>
-                <li><a href="#">의견 나누기</a></li>
-                <li><a href="#">기타</a></li>
+                <li><a href="#" onclick="commentPage()">의견 나누기</a></li>
+                <li><a href="#" onclick="guitarPage()">기타</a></li>
             </ul>
         </nav>
         <hr>
@@ -37,5 +38,29 @@
     <main></main>
     룰페이지임
     <script src="../js/main.js"></script>
+    <script>
+        function checkLoginStatus() {
+            const authBtns = document.getElementById('auth-btns');
+            const user = localStorage.getItem('user');
+            if (user) {
+                // 로그인 상태: 로그아웃 버튼만 표시
+                authBtns.innerHTML = `<button type="button" onclick="logout()">로그아웃</button>`;
+            } else {
+                // 비로그인 상태: 로그인/회원가입 버튼 표시
+                authBtns.innerHTML = `
+                    <button type="button" onclick="location.href='login.html'">로그인</button>
+                    <button type="button" onclick="location.href='signup.html'">회원가입</button>
+                `;
+            }
+        }
+    </script>
+    <script>
+        // 로그아웃 함수 예시
+        function logout() {
+            localStorage.removeItem('user');
+    location.href = 'main.html';
+}
+window.onload = checkLoginStatus;
+    </script>
 </body>
 </html>

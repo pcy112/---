@@ -1,18 +1,18 @@
 function homePage(){
     //홈페이지를 가져옴
-    window.location.href = "main.html";
+    location.href = "main.html";
 }
 function secondPage(){
     //두번째 페이지를 가져옴
-    window.location.href = "second.html";
+    location.href = "second.html";
 }
 function thirdPage(){
     //세번째 페이지를 가져옴
-    window.location.href = "third.html";
+    location.href = "third.html";
 }
 function fourthPage(){
     //네번째 페이지를 가져옴
-    window.location.href = "fourth.html";
+    location.href = "fourth.html";
 }
 
 function popupPage() {
@@ -35,6 +35,13 @@ function signUp(){
 function logout(){
     // 로그아웃 기능 구현
     // 예를 들어, 세션 스토리지에서 사용자 정보를 제거하고 홈 페이지로 이동
+    localStorage.removeItem('user'); // 사용자 정보 제거
     window.location.href = "main.html"; // 홈 페이지로 이동
 }
-
+function commentPage(){
+    // 댓글 페이지로 이동
+    window.location.href = "comment.html";
+}
+function guitarPage(){
+    window.location.href = "guitar.html";
+}

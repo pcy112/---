@@ -1,0 +1,111 @@
+/* This file contains the styles for the web application, defining the layout and appearance of the HTML elements. */
+
+/* Global Styles */
+body {
+    font-family: 'Nanum Brush Script', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.logo-img {
+    width: 100px;
+    cursor: pointer;
+}
+
+.search-form {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.search-form input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-form button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #fff;
+    color: #4CAF50;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.navbar {
+    margin: 10px 0;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+}
+
+.hero-title {
+    margin: 20px 0;
+}
+
+.custom-row {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.img-wide {
+    flex: 2;
+}
+
+.img-half-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.img-half {
+    margin: 10px 0;
+}
+
+.img-half img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.img-label {
+    text-align: center;
+    font-weight: bold;
+}
+
+.half-desc {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

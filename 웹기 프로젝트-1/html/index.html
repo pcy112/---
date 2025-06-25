@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>홈페이지</title>
     <link rel="stylesheet" href="../css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap" rel="stylesheet">
 </head>
-<body>
 
+<body onload="checkLoginStatus()">
     <header>
         <div class="header-row">
             <img class="logo-img" src="https://img.khan.co.kr/news/2023/01/12/l_2023011301000571200047071.jpg" alt="무지개" onclick="homePage()">
@@ -15,52 +16,51 @@
                 <input type="text" placeholder="검색어를 입력하세요">
                 <button type="submit">검색</button>
             </form>
-            <div class="auth-btns" id="auth-btns">
-                <!-- 로그인 상태에 따라 버튼이 변경됩니다. -->
-                <button type="button">회원가입</button>
-                <button type="button">로그인</button>
-            </div>
+            <div id="auth-btns" class="auth-btns"></div>
         </div>
         <nav class="navbar">
-            <!-- 네비게이션 메뉴가 있다면 여기에 추가 -->
             <ul>
-                <li><a href="#" onclick="homePage()">홈</a></li>
-                <li><a href="#" onclick="secondPage()">나라별 문화 카드</a></li>
+                <li><a href="#" onclick="homePage()">홈</a></li> 
+                <li><a href="#" onclick="secondPage()">나라별 문화 카드</a></li> 
                 <li><a href="#" onclick="thirdPage()">나라별 퀴즈</a></li>
                 <li><a href="#" onclick="fourthPage()">만남의 광장</a></li>
-                <li><a href="#" onclick="commentPage()">의견 나누기</a></li>
-                <li><a href="#" onclick="guitarPage()">기타</a></li>
+                <li><a href="#">의견 나누기</a></li>
+                <li><a href="#">기타</a></li>
             </ul>
         </nav>
-        <hr>
-
+        <div class="hero-title">
+            <h4>🌏 모두가 어우러지는 문화의 공간</h4>
+        </div>
     </header>
-    <main></main>
-    루페이지임
+
+    <main>
+        <h1>환영합니다!</h1>
+        <p>여기는 홈페이지입니다. 다양한 문화 콘텐츠를 즐겨보세요.</p>
+    </main>
+    
+    <footer>
+        <!-- 개인정보 처리방침 -->
+    </footer>
+
     <script src="../js/main.js"></script>
     <script>
         function checkLoginStatus() {
             const authBtns = document.getElementById('auth-btns');
             const user = localStorage.getItem('user');
             if (user) {
-                // 로그인 상태: 로그아웃 버튼만 표시
                 authBtns.innerHTML = `<button type="button" onclick="logout()">로그아웃</button>`;
             } else {
-                // 비로그인 상태: 로그인/회원가입 버튼 표시
                 authBtns.innerHTML = `
                     <button type="button" onclick="location.href='login.html'">로그인</button>
                     <button type="button" onclick="location.href='signup.html'">회원가입</button>
                 `;
             }
         }
-    </script>
-    <script>
-        // 로그아웃 함수 예시
+        
         function logout() {
             localStorage.removeItem('user');
-    location.href = 'main.html';
-}
-window.onload = checkLoginStatus;
+            location.href = 'login.html';
+        }
     </script>
 </body>
-</html
+</html>

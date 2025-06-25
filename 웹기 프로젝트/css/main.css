@@ -219,3 +219,70 @@ header {
     color: #333;
     margin-left: 12px;
 }
+/* 여기서부터는 게시판 css */
+.comment-board {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+}
+
+.comment-board h2 {
+    margin-bottom: 18px;
+    font-size: 1.4rem;
+    color: #6c63ff;
+    text-align: center;
+}
+
+#comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+#comment-form input,
+#comment-form textarea {
+    padding: 10px;
+    border: 1px solid #d1d1d1;
+    border-radius: 6px;
+    font-size: 1rem;
+    resize: none;
+}
+
+#comment-form button {
+    background: #6c63ff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 0;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#comment-form button:hover {
+    background: #554ee2;
+}
+
+#comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+#comment-list li {
+    background: #f7f7fa;
+    border-radius: 6px;
+    padding: 12px 10px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    border-left: 4px solid #6c63ff;
+}
+
+#comment-list li .comment-nick {
+    font-weight: bold;
+    color: #6c63ff;
+    margin-right: 8px;
+}

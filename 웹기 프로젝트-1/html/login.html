@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <header>
+        <h1>로그인 페이지</h1>
+    </header>
+
+    <main>
+        <form id="login-form" onsubmit="return handleLogin(event)">
+            <div>
+                <label for="username">사용자 이름:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">비밀번호:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">로그인</button>
+        </form>
+        <p>계정이 없으신가요? <a href="signup.html">회원가입</a></p>
+    </main>
+
+    <footer>
+        <!-- 개인정보 처리방침 -->
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // 로그인 처리 로직 (예시)
+            if (username && password) {
+                localStorage.setItem('user', username);
+                location.href = 'loginAfter.html';
+            } else {
+                alert('사용자 이름과 비밀번호를 입력하세요.');
+            }
+        }
+    </script>
+</body>
+</html>

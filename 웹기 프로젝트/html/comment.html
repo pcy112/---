@@ -35,9 +35,19 @@
         <hr>
 
     </header>
-    <main></main>
-    루페이지임
+    <main>
+        <section class="comment-board">
+            <h2>의견 나누기</h2>
+            <form id="comment-form">
+                <input type="text" id="comment-username" placeholder="닉네임" required>
+                <textarea id="comment-content" placeholder="댓글을 입력하세요" required></textarea>
+                <button type="submit">댓글 등록</button>
+            </form>
+            <ul id="comment-list"></ul>
+        </section>
+    </main>
     <script src="../js/main.js"></script>
+    <script src="../js/comment.js"></script>
     <script>
         function checkLoginStatus() {
             const authBtns = document.getElementById('auth-btns');
@@ -63,4 +73,4 @@
 window.onload = checkLoginStatus;
     </script>
 </body>
-</html
+</html>
