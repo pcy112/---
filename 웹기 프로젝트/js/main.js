@@ -26,3 +26,10 @@ function popupPage() {
         sessionStorage.setItem('popupShown', 'true'); // 팝업 표시 기록 저장
     }
 }
+function login(){
+    window.location.href = "https://dodam.b1nd.com/sign";
+}
+function signUp(){
+    window.location.href = "https://dodam.b1nd.com/sign";
+}
+
