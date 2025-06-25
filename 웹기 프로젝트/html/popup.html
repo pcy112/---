@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup</title>
+    <link rel="stylesheet" href="../css/popup.css"> <!-- 스타일시트 연결 -->
+</head>
+<body>
+    <header>
+        <h1>팝업 페이지</h1>
+    </header>
+    <main>
+        <p onclick="laftel()">여러분 애니도 다문화입니다!!!</p>
+    </main>
+    <footer>
+        <p>Animations are culture!!!</p>
+        <button id="closeButton" onclick="closePopup()">❌</button>
+
+    </footer>
+    <script src="../js/popup.js"></script><!-- 스크립트 연결 -->
+    <script>
+        function closePopup() {
+            window.close(); // 팝업 창 닫기
+        }
+        function laftel(){
+            // 라프텔 페이지로 이동
+            window.location.href = "https://laftel.net/";
+        }
+    </script>
+</body>
+</html>
