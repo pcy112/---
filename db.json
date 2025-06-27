@@ -5,11 +5,30 @@
       "username": "abcb",
       "email": "a12345@gmail.com",
       "password": "1234"
-    },{
+    },
+    {
       "id": "4bed",
       "username": "채연채연",
       "email": "pcy@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": "5f3c",
+      "username": "77ㅓㅓㅓ억",
+      "email": "a123456@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "870a",
+      "username": "121212",
+      "email": "1234@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "f69a",
+      "username": "121212",
+      "email": "a123@gmail.com",
+      "password": "1234"
     }
   ]
-}    
+}

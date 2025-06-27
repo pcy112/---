@@ -29,7 +29,7 @@
                 <ul>
                     <li><a href="#" onclick="homePage()">홈</a></li> 
                     <li><a href="#" onclick="secondPage()">나라별 문화 카드</a></li> 
-                    <li><a href="#" onclick="thirdPage()">나라별 퀴즈</a></li>
+                    <li><a href="#" onclick="quizPage()">나라별 퀴즈</a></li>
                     <li><a href="#" onclick="fourthPage()">만남의 광장</a></li>
                     <li><a href="#" onclick="commentPage()">의견 나누기</a></li>
                     <li><a href="#" onclick="guitarPage()">기타</a></li>
@@ -42,30 +42,33 @@
     </header>
 
     <main>
-        <div class="custom-row">
-        <div class="img-wide">
-            <iframe width="700px" height="600" src="https://www.youtube.com/embed/ALt3g6a6rqo"
-                title="다문화 영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen style="border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08);"></iframe>
-            <div class="img-label">1</div>
-        </div>
-        <div class="img-half-group">
-            <div class="img-half">
-                <img src="https://cdn.epnc.co.kr/news/photo/202006/97811_90478_3248.jpg" alt="이미지2">
-                <div class="img-label">2</div>
-                <div class="half-desc">
-                    <p>여기는 2번 이미지에 대한 설명문입니다.<br>원하는 내용을 자유롭게 작성하세요.</p>
-                </div>
+        <div class="media-row">
+            <div class="media-main">
+                <iframe src="https://www.youtube-nocookie.com/embed/qSOUiefcl1o?si=kSBXT05MMCnVrXue&amp;controls=0"
+                    title="다문화 영상" frameborder="0" allowfullscreen></iframe>
             </div>
-                <div class="img-half">
-                    <img src="https://cdn.newscj.com/news/photo/202401/3100470_3119257_174.jpg" alt="이미지3">
-                    <div class="img-label">3</div>
-                    <div class="half-desc">
-                        <p>여기는 3번 이미지에 대한 설명문입니다.<br>각각 별도의 설명을 넣을 수 있습니다.</p>
-                    </div>
+            <div class="media-side-horizontal">
+                <div class="media-side-img">
+                    <img src="https://www.djtimes.co.kr/news/photo/202310/102361_83646_4251.jpg" alt="다문화 축제">
+                    <div class="media-meta">문화 소식</div>
+                    <div class="media-title">다양한 문화가 어우러진 축제</div>
+                    <div class="media-desc2">서로 다른 전통과 색깔이 한자리에 모여 새로운 꿈을 만들수 있어요!</div>
+                    <div class="media-author">By <span>충남</span></div>
+                </div>
+                <div class="media-side-img">
+                    <img src="https://cdn.knpnews.com/news/photo/201611/11925_7299_4555.jpg" alt="식사">
+                    <div class="media-meta">문화 소식</div>
+                    <div class="media-title">함께하는 식사, 함께하는 이야기</div>
+                    <div class="media-desc2">음식과 대화 속에서 우리는 서로를 더 깊이 이해하게 될거에요!</div>
+                    <div class="media-author">By <span>기장군</span></div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="calendar-section">
+        <h3 style="text-align:center; margin:24px 0 8px 0;">📅 다문화 행사 달력</h3>
+        <div id="calendar"></div>
+    </div>
     </main>
     
     <footer>
@@ -99,5 +102,6 @@
     location.href = 'main.html';
 }
 window.onload = checkLoginStatus;
+window.onload = popupPage();
     </script>
 </body>

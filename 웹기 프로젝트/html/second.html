@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>나라별 문화 카드</title>
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/second.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <header>
         <div class="header-row">
             <img class="logo-img" src="https://img.khan.co.kr/news/2023/01/12/l_2023011301000571200047071.jpg" alt="무지개" onclick="homePage()">
@@ -22,21 +23,83 @@
             </div>
         </div>
         <nav class="navbar">
-            <!-- 네비게이션 메뉴가 있다면 여기에 추가 -->
             <ul>
                 <li><a href="#" onclick="homePage()">홈</a></li>
                 <li><a href="#" onclick="secondPage()">나라별 문화 카드</a></li>
-                <li><a href="#" onclick="thirdPage()">나라별 퀴즈</a></li>
+                <li><a href="#" onclick="quizPage()">나라별 퀴즈</a></li>
                 <li><a href="#" onclick="fourthPage()">만남의 광장</a></li>
                 <li><a href="#" onclick="commentPage()">의견 나누기</a></li>
                 <li><a href="#" onclick="guitarPage()">기타</a></li>
             </ul>
         </nav>
-        <hr>
-
     </header>
-    <main></main>
-    룰페이지임
+    <main>
+        <div class="culture-card-list">
+            <div class="culture-card-flip">
+                <div class="culture-card-inner">
+                    <!-- 앞면: 요약 정보 -->
+                    <div class="culture-card-front">
+                        <img class="culture-flag" src="https://flagcdn.com/w320/kr.png" alt="한국 국기">
+                        <div class="culture-card-country">대한민국</div>
+                        <ul class="culture-card-info">
+                            <li><b>수도</b> : 서울</li>
+                            <li><b>문화유산</b> : 경복궁</li>
+                            <li><b>음식</b> : 김치</li>
+                            <li><b>전통의상</b> : 한복</li>
+                            <li><b>디저트</b> : 떡</li>
+                        </ul>
+                    </div>
+                    <!-- 뒷면: 대표 문화유산 이미지와 설명 -->
+                    <div class="culture-card-back">
+                        <img class="culture-heritage" src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=2e7e7e7e-2e7e-2e7e-2e7e-2e7e7e7e7e7e" alt="경복궁">
+                        <div class="culture-card-title">경복궁</div>
+                        <div class="culture-card-desc">조선 시대를 대표하는 궁궐로, 한국의 역사와 문화를 상징합니다.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="culture-card-flip">
+                <div class="culture-card-inner">
+                    <div class="culture-card-front">
+                        <img class="culture-flag" src="https://flagcdn.com/w320/jp.png" alt="일본 국기">
+                        <div class="culture-card-country">일본</div>
+                        <ul class="culture-card-info">
+                            <li><b>수도</b> : 도쿄</li>
+                            <li><b>문화유산</b> : 후지산</li>
+                            <li><b>음식</b> : 스시</li>
+                            <li><b>전통의상</b> : 기모노</li>
+                            <li><b>디저트</b> : 모찌</li>
+                        </ul>
+                    </div>
+                    <div class="culture-card-back">
+                        <img class="culture-heritage" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/FujiSunriseKawaguchiko2025WP.jpg" alt="후지산">
+                        <div class="culture-card-title">후지산</div>
+                        <div class="culture-card-desc">일본을 대표하는 상징적인 산으로, 세계문화유산에 등재되어 있습니다.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="culture-card-flip">
+                <div class="culture-card-inner">
+                    <div class="culture-card-front">
+                        <img class="culture-flag" src="https://flagcdn.com/w320/fr.png" alt="프랑스 국기">
+                        <div class="culture-card-country">프랑스</div>
+                        <ul class="culture-card-info">
+                            <li><b>수도</b> : 파리</li>
+                            <li><b>문화유산</b> : 에펠탑</li>
+                            <li><b>음식</b> : 바게트</li>
+                            <li><b>전통의상</b> : 베레모</li>
+                            <li><b>디저트</b> : 마카롱</li>
+                        </ul>
+                    </div>
+                    <div class="culture-card-back">
+                        <img class="culture-heritage" src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg" alt="에펠탑">
+                        <div class="culture-card-title">에펠탑</div>
+                        <div class="culture-card-desc">프랑스 파리의 상징적인 랜드마크로, 세계적으로 유명한 문화유산입니다.</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 나라별로 culture-card-flip을 복사해서 추가 -->
+        </div>
+    </main>
     <script src="../js/main.js"></script>
     <script>
         function checkLoginStatus() {
@@ -53,14 +116,12 @@
                 `;
             }
         }
-    </script>
-    <script>
-        // 로그아웃 함수 예시
         function logout() {
             localStorage.removeItem('user');
-    location.href = 'main.html';
-}
-window.onload = checkLoginStatus;
+            location.href = 'main.html';
+        }
+        window.onload = checkLoginStatus;
     </script>
+    <script src="../js/second.js"></script>
 </body>
 </html>

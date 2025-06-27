@@ -18,9 +18,14 @@ function renderComments() {
     const comments = JSON.parse(localStorage.getItem('comments') || '[]');
     const list = document.getElementById('comment-list');
     list.innerHTML = '';
-    comments.forEach(c => {
+    comments.forEach((c, i) => {
         const li = document.createElement('li');
-        li.innerHTML = `<span class="comment-nick">${c.username}</span>${c.content}`;
+        li.innerHTML = `
+            <span class="comment-nick">${c.username}</span>
+            ${c.content}
+            <button class="edit-btn" data-idx="${i}">수정</button>
+            <button class="delete-btn" data-idx="${i}">삭제</button>
+        `;
         list.appendChild(li);
     });
 }

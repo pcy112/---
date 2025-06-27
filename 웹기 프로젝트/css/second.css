@@ -1,0 +1,164 @@
+.culture-card-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.culture-card-flip {
+    width: 220px;
+    height: 260px;
+    perspective: 1000px;
+    cursor: pointer;
+    flex: 0 0 220px;
+    box-sizing: border-box;
+}
+
+.culture-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(0.4,2,0.6,1);
+    transform-style: preserve-3d;
+}
+
+.culture-card-flip.flipped .culture-card-inner {
+    transform: rotateY(180deg);
+}
+
+.culture-card-front,
+.culture-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(106,13,173,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 18px 10px 14px 10px;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.culture-card-front img {
+    width: 80px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1.5px solid #e0c3fc;
+    margin-bottom: 8px;
+}
+
+.culture-card-country {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #7c3aed;
+    margin-bottom: 4px;
+}
+
+.culture-card-info {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    width: 100%;
+    text-align: left;
+    font-size: 0.97rem;
+    color: #444;
+    font-family: 'Gowun Dodum', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    box-sizing: border-box;
+    word-break: keep-all;
+}
+.culture-card-info li {
+    margin-bottom: 4px;
+    padding-left: 8px;
+    text-indent: -4px;
+}
+.culture-card-info b {
+    color: #7c3aed;
+    font-weight: 600;
+}
+
+.culture-card-back {
+    transform: rotateY(180deg);
+}
+
+.culture-card-back img {
+    width: 80px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1.5px solid #e0c3fc;
+    margin-bottom: 8px;
+}
+
+.culture-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 4px;
+}
+
+.culture-card-desc {
+    font-size: 0.98rem;
+    color: #555;
+    padding: 0 14px;
+    box-sizing: border-box;
+    word-break: keep-all;
+    font-family: 'Gowun Dodum', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    margin-bottom: 0;
+    margin-top: 0;
+    overflow-wrap: break-word;
+}
+
+.culture-card-images {
+    display: flex;
+    gap: 10px;
+    justify-content: center; 
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.culture-flag {
+    width: 48px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1.5px solid #e0c3fc;
+    background: #fff;
+}
+
+.culture-heritage {
+    width: 80px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1.5px solid #e0c3fc;
+    background: #fff;
+}
+
+.culture-card-info {
+    list-style: none;
+    padding: 0 0 0 0;
+    margin: 10px 0 0 0;
+    width: 100%;
+    text-align: left;
+    font-size: 0.97rem;
+    color: #444;
+    font-family: 'Gowun Dodum', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+}
+.culture-card-info li {
+    margin-bottom: 4px;
+    padding-left: 8px;
+    text-indent: -4px;
+}
+.culture-card-info b {
+    color: #7c3aed;
+    font-weight: 600;
+}

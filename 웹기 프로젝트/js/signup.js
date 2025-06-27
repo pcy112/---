@@ -35,7 +35,7 @@ document.getElementById('signup-form').addEventListener('submit', function(event
             if (!data) return;
             document.getElementById('message').innerText = '회원가입 성공!';
             setTimeout(() => {
-                window.location.href = '../html/main.html';
+                window.location.href = 'main.html';
             }, 500);
         })
         .catch(error => {
