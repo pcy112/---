@@ -55,7 +55,7 @@ const quizData = [
     { question: "한국의 전통 의상은?", answer: "한복" },
     { question: "이탈리아의 수도는?", answer: "로마" },
     { question: "중국의 대표적인 명절은?", answer: "춘절" },
-    { question: "브라질의 공식 언어는?", answer: "포르투갈어" },
+    { question: "브라질의 공식 언어는?", answer: "포어" },
     { question: "이집트의 대표 유적지는?", answer: "피라미드" },
     { question: "영국의 수도는?", answer: "런던" },
     { question: "독일의 대표 맥주 축제는?", answer: "옥토버페스트" },
@@ -71,7 +71,7 @@ const quizData = [
     { question: "스위스의 대표 음식은?", answer: "퐁듀" },
     { question: "네덜란드의 유명한 꽃은?", answer: "튤립" },
     { question: "핀란드의 산타마을이 있는 도시는?", answer: "로바니에미" },
-    { question: "남아프리카공화국의 3대 수도 중 하나는?", answer: "케이프타운" },
+    { question: "남아프리카공화국의 3대 수도 남서쪽에 위치해있는 항구도시는?", answer: "케이프타운" },
     { question: "뉴질랜드의 대표 새는?", answer: "키위" },
     { question: "사우디아라비아의 성지 도시는?", answer: "메카" },
     { question: "베트남의 수도는?", answer: "하노이" },
@@ -187,28 +187,111 @@ window.onload = showStartScreen;
 
 
 // 달력 js
-function renderCalendar() {
+
+let calendarEvents = {};
+
+// 연, 월 상태 저장
+let calendarYear = 2025;
+let calendarMonth = 0; // 0: 1월
+
+// 달력 렌더링 함수
+function renderCalendar(year = calendarYear, month = calendarMonth) {
+    calendarYear = year;
+    calendarMonth = month;
     const calendarEl = document.getElementById('calendar');
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = today.getMonth(); // 0~11
-    const firstDay = new Date(year, month, 1).getDay(); // 0(일)~6(토)
+    if (!calendarEl) return;
+
+    // 달력 헤더(월 이동 버튼)
+    let html = `
+        <div style="text-align:center; margin-bottom:8px;">
+            <button id="prev-month" style="margin-right:8px;">◀</button>
+            <span style="font-weight:bold;">${year}년 ${month + 1}월</span>
+            <button id="next-month" style="margin-left:8px;">▶</button>
+        </div>
+        <table class="simple-calendar" style="width:100%;text-align:center;">
+            <thead>
+                <tr>
+                    <th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>
+                </tr>
+            </thead>
+            <tbody><tr>
+    `;
+
+    const firstDay = new Date(year, month, 1).getDay();
     const lastDate = new Date(year, month + 1, 0).getDate();
 
-    let html = `<table class="simple-calendar"><thead><tr>
-        <th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>
-    </tr></thead><tbody><tr>`;
+    // 1일 전까지 빈칸
+    for (let i = 0; i < firstDay; i++) html += "<td></td>";
 
-    // 빈칸
-    for(let i=0; i<firstDay; i++) html += "<td></td>";
-
-    // 날짜
-    for(let d=1; d<=lastDate; d++) {
-        const isToday = (d === today.getDate());
-        html += `<td${isToday ? ' class="today"' : ''}>${d}</td>`;
-        if((firstDay + d) % 7 === 0) html += "</tr><tr>";
+    // 날짜 출력
+    for (let d = 1; d <= lastDate; d++) {
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const isToday = (year === new Date().getFullYear() && month === new Date().getMonth() && d === new Date().getDate());
+        html += `<td${isToday ? ' class="today"' : ''} data-date="${dateStr}" style="cursor:pointer;vertical-align:top;">${d}`;
+        // 일정 표시
+        if (calendarEvents[dateStr]) {
+            calendarEvents[dateStr].forEach(ev => {
+                html += `<div class="event" style="background:#ffe0b2; margin:2px 0; font-size:12px; border-radius:4px;">${ev}</div>`;
+            });
+        }
+        html += `</td>`;
+        if ((firstDay + d) % 7 === 0) html += "</tr><tr>";
     }
     html += "</tr></tbody></table>";
+
+    // 일정 입력 폼
+    html += `
+        <div style="margin-top:10px; text-align:center;">
+            <input type="date" id="event-date" value="${year}-${String(month + 1).padStart(2, '0')}-01" style="padding:2px;">
+            <input type="text" id="event-text" placeholder="일정 내용" style="padding:2px;">
+            <button id="add-event-btn">일정 추가</button>
+        </div>
+    `;
+
     calendarEl.innerHTML = html;
+
+    // 월 이동 버튼 이벤트
+    document.getElementById('prev-month').onclick = () => {
+        let y = calendarYear, m = calendarMonth - 1;
+        if (m < 0) { y--; m = 11; }
+        renderCalendar(y, m);
+    };
+    document.getElementById('next-month').onclick = () => {
+        let y = calendarYear, m = calendarMonth + 1;
+        if (m > 11) { y++; m = 0; }
+        renderCalendar(y, m);
+    };
+
+    // 일정 추가 이벤트
+    document.getElementById('add-event-btn').onclick = () => {
+        const date = document.getElementById('event-date').value;
+        const text = document.getElementById('event-text').value.trim();
+        if (!date || !text) return alert('날짜와 일정을 입력하세요.');
+        if (!calendarEvents[date]) calendarEvents[date] = [];
+        calendarEvents[date].push(text);
+        renderCalendar(calendarYear, calendarMonth);
+    };
+
+    // 날짜 클릭 시 해당 날짜로 일정 입력란 날짜 변경
+    document.querySelectorAll('.simple-calendar td[data-date]').forEach(td => {
+        td.onclick = () => {
+            document.getElementById('event-date').value = td.dataset.date;
+        };
+    });
 }
-window.addEventListener('DOMContentLoaded', renderCalendar);
+
+// 페이지가 모두 로드되면 2025년 1월 달력 표시
+document.addEventListener('DOMContentLoaded', function() {
+    renderCalendar(2025, 0);
+});
+// HTML에서 일정 데이터(JSON)를 읽어 calendarEvents에 할당
+const eventsScript = document.getElementById('calendar-events-data');
+if (eventsScript) {
+    try {
+        calendarEvents = JSON.parse(eventsScript.textContent);
+    } catch (e) {
+        calendarEvents = {};
+    }
+} else {
+    calendarEvents = {};
+}

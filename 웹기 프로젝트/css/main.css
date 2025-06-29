@@ -1,411 +1,607 @@
+/* 헤더 배경 투명 처리 */
 header {
-    background: none !important;
-    background-color: transparent !important;
+    background: none; /* 배경 이미지를 없앰 */
+    background-color: transparent; /* 배경색을 투명하게 설정 */
 }
 
+/* 헤더 행(로고, 검색, 인증 버튼) */
 .header-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 16px 24px;
-    flex-wrap: wrap;
+    display: flex; /* flexbox로 가로 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: space-between; /* 양쪽 끝에 요소 배치 */
+    gap: 16px; /* 요소 사이 간격 */
+    padding: 16px 24px; /* 위아래 16px, 좌우 24px 여백 */
+    flex-wrap: wrap; /* 줄이 넘치면 다음 줄로 */
 }
 
-/* 로고 */
+/* 로고 이미지 스타일 */
 .logo-img {
-    width: 70px;
-    height: 50px;
-    border-radius: 8px;
-    object-fit: cover;
-    cursor: pointer;
+    width: 70px; /* 가로 70px */
+    height: 50px; /* 세로 50px */
+    border-radius: 8px; /* 모서리 둥글게 */
+    object-fit: cover; /* 이미지 비율 유지하며 채우기 */
+    cursor: pointer; /* 마우스 올리면 손가락 모양 */
 }
 
-/* 검색창 */
+/* 검색 폼(검색창 전체) */
 .search-form {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    max-width: 1000px;
+    flex: 1; /* 남은 공간 모두 차지 */
+    display: flex; /* 내부 요소 가로 정렬 */
+    justify-content: center; /* 가운데 정렬 */
+    gap: 8px; /* 요소 사이 간격 */
+    max-width: 1000px; /* 최대 너비 1000px */
 }
 
 /* 검색 입력창 */
 .search-form input[type="text"] {
-    width: 100%;
-    max-width: 280px;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    width: 100%; /* 부모 영역 모두 차지 */
+    max-width: 280px; /* 최대 너비 280px */
+    padding: 8px 12px; /* 위아래 8px, 좌우 12px 여백 */
+    border: 1px solid #ccc; /* 연한 회색 테두리 */
+    border-radius: 6px; /* 모서리 둥글게 */
 }
 
 /* 검색 버튼 */
 .search-form button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 6px;
-    background: #6a0dad;
-    color: #fff;
-    cursor: pointer;
+    padding: 8px 16px; /* 위아래 8px, 좌우 16px 여백 */
+    border: none; /* 테두리 없음 */
+    border-radius: 6px; /* 모서리 둥글게 */
+    background: #6a0dad; /* 보라색 배경 */
+    color: #fff; /* 글자색 흰색 */
+    cursor: pointer; /* 마우스 올리면 손가락 모양 */
 }
 
-/* 로그인/회원가입 버튼 */
+/* 로그인/회원가입 버튼 컨테이너 */
 .auth-btns {
-    display: flex;
-    gap: 8px;
+    display: flex; /* 가로 정렬 */
+    gap: 8px; /* 버튼 사이 간격 */
 }
 
 /* 로그인/회원가입 버튼 스타일 */
 .auth-btns button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 6px;
-    background: #8a2be2;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.3s ease;
+    padding: 8px 16px; /* 버튼 안쪽 여백 */
+    border: none; /* 테두리 없음 */
+    border-radius: 6px; /* 모서리 둥글게 */
+    background: #8a2be2; /* 연보라 배경 */
+    color: #fff; /* 글자색 흰색 */
+    cursor: pointer; /* 마우스 올리면 손가락 모양 */
+    transition: background 0.3s, transform 0.2s; /* 배경색, 크기 변화 애니메이션 */
 }
 
 /* 로그인/회원가입 버튼 호버 효과 */
 .auth-btns button:hover {
-    background: #6a0dad;
-    transform: scale(1.05);
+    background: #6a0dad; /* 진한 보라로 변경 */
+    transform: scale(1.05); /* 버튼이 5% 커짐 */
 }
 
 /* 네비게이션 바 */
 .navbar {
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: none;
-    box-shadow: none;
-    border-radius: 0;
-    margin: 12px 0px;
-    border-top: 1.5px solid #d1c4e9;
-    border-bottom: 1.5px solid #d1c4e9;
+    height: 50px; /* 높이 50px */
+    overflow: hidden; /* 넘치는 부분 숨김 */
+    display: flex; /* 가로 정렬 */
+    justify-content: center; /* 가운데 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    background: none; /* 배경 없음 */
+    box-shadow: none; /* 그림자 없음 */
+    border-radius: 0; /* 모서리 각지게 */
+    margin: 12px 0px; /* 위아래 12px 여백 */
+    border-top: 1.5px solid #d1c4e9; /* 위쪽 연보라 선 */
+    border-bottom: 1.5px solid #d1c4e9; /* 아래쪽 연보라 선 */
 }
 
-/* 네비게이션 바 메뉴 */
+/* 네비게이션 바 메뉴 리스트 */
 .navbar ul {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    display: flex; /* 가로 정렬 */
+    gap: 32px; /* 메뉴 사이 간격 */
+    list-style: none; /* 점 없는 리스트 */
+    padding: 0; /* 안쪽 여백 없음 */
+    margin: 0; /* 바깥 여백 없음 */
 }
 
-/* 네비게이션 바 링크 */
+/* 네비게이션 바 링크 스타일 */
 .navbar a {
-    color: #222;
-    font-weight: 500;
-    font-size: 1rem;
-    text-decoration: none;
-    padding: 10px 28px;
-    border-radius: 6px;
-    transition: background 0.3s ease, transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.2s cubic-bezier(0.23, 1, 0.32, 1);
-    background: rgba(255, 255, 255, 0.15);
-    font-family: "Grandiflora One", cursive;
-    font-weight: 400;
-    font-style: normal;
+    color: #222; /* 글자색 거의 검정 */
+    font-weight: 400; /* 보통 굵기 */
+    font-size: 1rem; /* 글자 크기 16px */
+    text-decoration: none; /* 밑줄 없음 */
+    padding: 8px 24px; /* 위아래 8px, 좌우 24px 여백 */
+    border-radius: 6px; /* 모서리 둥글게 */
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s; /* 배경, 크기, 그림자 애니메이션 */
+    background: rgba(255, 255, 255, 0.15); /* 반투명 흰 배경 */
+    font-family: "Grandiflora One", cursive; /* 예쁜 손글씨 폰트 */
+    font-style: normal; /* 기본 스타일 */
 }
 
+/* 네비게이션 바 리스트 항목 커서 */
 .navbar li {
-    cursor: pointer;
+    cursor: pointer; /* 마우스 올리면 손가락 모양 */
 }
 
+/* 네비게이션 바 링크 호버 효과 */
 .navbar a:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateY(-6px) scale(1.05);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    background: rgba(255, 255, 255, 0.28); /* 더 진한 흰 배경 */
+    box-shadow: 0 4px 18px rgba(106,13,173,0.13); /* 보라색 그림자 */
+    transform: scale(1.02); /* 2% 커짐 */
 }
 
 /* hero-title 문구 스타일 */
 .hero-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0 20px 0;
-    margin-bottom: 24px;
+    display: flex; /* 세로 정렬 */
+    flex-direction: column; /* 위에서 아래로 */
+    align-items: center; /* 가운데 정렬 */
+    justify-content: center; /* 세로 중앙 */
+    padding: 10px 0 20px 0; /* 위 10px, 아래 20px */
+    margin-bottom: 24px; /* 아래쪽 여백 */
 }
 
 .hero-title h4 {
-    font-family: "Grandiflora One", "Sunflower", sans-serif;
-    font-size: 2.2rem;
-    font-weight: 400;
-    color: #000000;
-    margin: 0;
-    letter-spacing: 0.02em;
-    text-shadow: 0 2px 8px rgba(106,13,173,0.08);
+    font-family: "Grandiflora One", "Sunflower", sans-serif; /* 손글씨+산세리프 폰트 */
+    font-size: 2.2rem; /* 큰 글씨 */
+    font-weight: 400; /* 보통 굵기 */
+    color: #000000; /* 검정색 */
+    margin: 0; /* 여백 없음 */
+    letter-spacing: 0.02em; /* 글자 간격 약간 */
+    text-shadow: 0 2px 8px rgba(106,13,173,0.08); /* 보라색 그림자 */
 }
 
-.media-row { /* 미디어 영역 */
-    display: flex;
-    gap: 32px;
-    justify-content: center;
-    align-items: stretch;
-    max-width: 2000px;
-    margin: 40px auto;
+/* 미디어 영역(메인/사이드) */
+.media-row { 
+    display: flex; /* 가로 정렬 */
+    gap: 32px; /* 사이 간격 */
+    justify-content: center; /* 가운데 정렬 */
+    align-items: stretch; /* 세로로 늘림 */
+    max-width: 2000px; /* 최대 너비 */
+    margin: 40px auto; /* 위아래 40px, 좌우 가운데 */
 }
 
-.media-main { /* 메인 미디어 */
-    flex: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* 메인 미디어 */
+.media-main { 
+    flex: 2; /* 2배 공간 차지 */
+    display: flex; /* 가로 정렬 */
+    align-items: center; /* 세로 중앙 */
+    justify-content: center; /* 가운데 정렬 */
 }
 
+/* 메인 미디어(iframe, img) */
 .media-main iframe, 
-.media-main img { /* 메인 미디어 */
-    width: 750px;  
-    height: 450px;
-    border-radius: 16px;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.10);
-    object-fit: cover;
-    background: #eee;
+.media-main img { 
+    width: 750px;  /* 너비 750px */
+    height: 450px; /* 높이 450px */
+    border-radius: 16px; /* 모서리 둥글게 */
+    box-shadow: 0 2px 16px rgba(0,0,0,0.10); /* 연한 검정 그림자 */
+    object-fit: cover; /* 비율 유지하며 채우기 */
+    background: #eee; /* 연회색 배경 */
 }
 
-.media-side-horizontal { /* 사이드 미디어 */
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    align-items: flex-start;   /* 여기만 수정! */
-    justify-content: center;
+/* 사이드 미디어(가로 배치) */
+.media-side-horizontal { 
+    flex: 1; /* 1배 공간 차지 */
+    display: flex; /* 가로 정렬 */
+    flex-direction: row; /* 가로 방향 */
+    gap: 16px; /* 사이 간격 */
+    align-items: flex-start;   /* 위쪽 정렬 */
+    justify-content: center; /* 가운데 정렬 */
 }
 
+/* 사이드 미디어 이미지 컨테이너 */
 .media-side-img {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 16px;
-    width: 380px;
+    display: flex; /* 세로 정렬 */
+    flex-direction: column; /* 위에서 아래로 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+    padding: 16px; /* 안쪽 여백 */
+    width: 380px; /* 너비 380px */
 }
 
+/* 사이드 미디어 이미지 */
 .media-side-img img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 12px;
+    width: 100%; /* 부모 영역 모두 차지 */
+    height: 180px; /* 높이 180px */
+    object-fit: cover; /* 비율 유지하며 채우기 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    margin-bottom: 12px; /* 아래쪽 여백 */
 }
 
+/* 미디어 메타 정보 */
 .media-meta {
-    font-size: 0.85rem;
-    color: #888;
-    letter-spacing: 0.08em;
-    margin-bottom: 4px;
-    font-weight: 600;
-    text-transform: uppercase;
+    font-size: 0.85rem; /* 작은 글씨 */
+    color: #888; /* 연한 회색 */
+    letter-spacing: 0.08em; /* 글자 간격 */
+    margin-bottom: 4px; /* 아래쪽 여백 */
+    font-weight: 600; /* 약간 굵게 */
+    text-transform: uppercase; /* 대문자 변환 */
 }
 
+/* 미디어 제목 */
 .media-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #222;
-    margin-bottom: 6px;
-    line-height: 1.3;
+    font-size: 1.25rem; /* 약간 큰 글씨 */
+    font-weight: bold; /* 굵게 */
+    color: #222; /* 거의 검정 */
+    margin-bottom: 6px; /* 아래쪽 여백 */
+    line-height: 1.3; /* 줄 간격 */
 }
 
+/* 미디어 설명 */
 .media-desc2 {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 10px;
+    font-size: 1rem; /* 보통 글씨 */
+    color: #555; /* 중간 회색 */
+    margin-bottom: 10px; /* 아래쪽 여백 */
 }
 
+/* 미디어 작성자 */
 .media-author {
-    font-size: 0.95rem;
-    color: #8f5eff;
-    font-weight: 500;
+    font-size: 0.95rem; /* 약간 작은 글씨 */
+    color: #8f5eff; /* 연보라 */
+    font-weight: 500; /* 중간 굵기 */
 }
 .media-author span {
-    color: #7c3aed;
-    font-weight: bold;
+    color: #7c3aed; /* 진한 보라 */
+    font-weight: bold; /* 굵게 */
 }
 
-/* 게시판 css */
+/* 게시판(댓글) 영역 */
 .comment-board {
-    max-width: 500px;
-    margin: 40px auto;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    padding: 32px 24px;
+    max-width: 500px; /* 최대 너비 */
+    margin: 40px auto; /* 위아래 40px, 좌우 가운데 */
+    background: #fff; /* 흰 배경 */
+    border-radius: 12px; /* 모서리 둥글게 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* 연한 그림자 */
+    padding: 32px 24px; /* 안쪽 여백 */
 }
 
+/* 게시판 제목 */
 .comment-board h2 {
-    margin-bottom: 18px;
-    font-size: 1.4rem;
-    color: #6c63ff;
-    text-align: center;
+    margin-bottom: 18px; /* 아래쪽 여백 */
+    font-size: 1.4rem; /* 큰 글씨 */
+    color: #6c63ff; /* 연보라 */
+    text-align: center; /* 가운데 정렬 */
 }
 
+/* 댓글 폼 */
 #comment-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 24px;
+    display: flex; /* 세로 정렬 */
+    flex-direction: column; /* 위에서 아래로 */
+    gap: 10px; /* 요소 사이 간격 */
+    margin-bottom: 24px; /* 아래쪽 여백 */
 }
 
+/* 댓글 입력창 */
 #comment-form input,
 #comment-form textarea {
-    padding: 10px;
-    border: 1px solid #d1d1d1;
-    border-radius: 6px;
-    font-size: 1rem;
-    resize: none;
+    padding: 10px; /* 안쪽 여백 */
+    border: 1px solid #d1d1d1; /* 연한 회색 테두리 */
+    border-radius: 6px; /* 모서리 둥글게 */
+    font-size: 1rem; /* 보통 글씨 */
+    resize: none; /* 크기 조절 불가 */
 }
 
+/* 댓글 등록 버튼 */
 #comment-form button {
-    background: #6c63ff;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 0;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
+    background: #6c63ff; /* 연보라 배경 */
+    color: #fff; /* 흰 글씨 */
+    border: none; /* 테두리 없음 */
+    border-radius: 6px; /* 모서리 둥글게 */
+    padding: 10px 0; /* 위아래 여백 */
+    font-size: 1rem; /* 보통 글씨 */
+    cursor: pointer; /* 마우스 올리면 손가락 모양 */
+    transition: background 0.2s; /* 배경색 애니메이션 */
 }
 
+/* 댓글 등록 버튼 호버 */
 #comment-form button:hover {
-    background: #554ee2;
+    background: #554ee2; /* 진한 보라 */
 }
 
+/* 댓글 리스트 */
 #comment-list {
-    list-style: none;
-    padding: 0;
+    list-style: none; /* 점 없는 리스트 */
+    padding: 0; /* 안쪽 여백 없음 */
 }
 
+/* 댓글 리스트 항목 */
 #comment-list li {
-    background: #f7f7fa;
-    border-radius: 6px;
-    padding: 12px 10px;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    border-left: 4px solid #6c63ff;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: space-between;
+    background: #f7f7fa; /* 연한 회색 배경 */
+    border-radius: 6px; /* 모서리 둥글게 */
+    padding: 12px 10px; /* 안쪽 여백 */
+    margin-bottom: 10px; /* 아래쪽 여백 */
+    font-size: 1rem; /* 보통 글씨 */
+    border-left: 4px solid #6c63ff; /* 왼쪽 연보라 선 */
+    display: flex; /* 가로 정렬 */
+    align-items: center; /* 세로 중앙 */
+    gap: 8px; /* 요소 사이 간격 */
+    justify-content: space-between; /* 양쪽 끝에 배치 */
 }
 
+/* 댓글 닉네임 */
 .comment-nick {
-    font-weight: bold;
-    color: #6c63ff;
-    margin-right: 8px;
+    font-weight: bold; /* 굵게 */
+    color: #6c63ff; /* 연보라 */
+    margin-right: 8px; /* 오른쪽 여백 */
 }
 
+/* 댓글 수정/삭제 버튼 */
 .edit-btn, .delete-btn {
-    background: #eee;
-    border: none;
-    border-radius: 4px;
-    padding: 2px 8px;
-    margin-left: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background 0.2s;
+    background: #eee; /* 연회색 배경 */
+    border: none; /* 테두리 없음 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    padding: 2px 8px; /* 안쪽 여백 */
+    margin-left: 4px; /* 왼쪽 여백 */
+    cursor: pointer; /* 마우스 올리면 손가락 모양 */
+    font-size: 0.9rem; /* 약간 작은 글씨 */
+    transition: background 0.2s; /* 배경색 애니메이션 */
 }
+/* 댓글 수정 버튼 호버 */
 .edit-btn:hover {
-    background: #ffe066;
+    background: #ffe066; /* 노란색 배경 */
 }
+/* 댓글 삭제 버튼 호버 */
 .delete-btn:hover {
-    background: #ff6b6b;
-    color: #fff;
+    background: #ff6b6b; /* 빨간 배경 */
+    color: #fff; /* 흰 글씨 */
 }
 
-
-
-/* 퀴즈 style */
+/* 퀴즈 영역 스타일 */
 .quiz-start-screen, .quiz-end-screen, .quiz-question-box {
-    max-width: 400px;
-    margin: 60px auto 0 auto;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 16px rgba(106,13,173,0.08);
-    padding: 32px 24px;
-    text-align: center;
+    max-width: 400px; /* 최대 너비 */
+    margin: 60px auto 0 auto; /* 위 60px, 좌우 가운데 */
+    background: #fff; /* 흰 배경 */
+    border-radius: 16px; /* 모서리 둥글게 */
+    box-shadow: 0 2px 16px rgba(106,13,173,0.08); /* 연보라 그림자 */
+    padding: 32px 24px; /* 안쪽 여백 */
+    text-align: center; /* 가운데 정렬 */
 }
+/* 퀴즈 질문 */
 .quiz-question {
-    margin-bottom: 18px;
-    color: #6a0dad;
+    margin-bottom: 18px; /* 아래쪽 여백 */
+    color: #6a0dad; /* 보라색 */
 }
+/* 퀴즈 입력창 */
 .quiz-input {
-    width: 80%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1.5px solid #d1c4e9;
-    margin-bottom: 16px;
-    font-size: 1rem;
+    width: 80%; /* 부모의 80% */
+    padding: 10px; /* 안쪽 여백 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    border: 1.5px solid #d1c4e9; /* 연보라 테두리 */
+    margin-bottom: 16px; /* 아래쪽 여백 */
+    font-size: 1rem; /* 보통 글씨 */
 }
+/* 퀴즈 버튼 그룹 */
 .quiz-btn-group {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 12px;
+    display: flex; /* 가로 정렬 */
+    justify-content: center; /* 가운데 정렬 */
+    gap: 12px; /* 버튼 사이 간격 */
+    margin-bottom: 12px; /* 아래쪽 여백 */
 }
+/* 퀴즈 버튼 */
 .quiz-btn {
-    padding: 8px 20px;
-    border: none;
-    border-radius: 8px;
-    background: #8a2be2;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
+    padding: 8px 20px; /* 안쪽 여백 */
+    border: none; /* 테두리 없음 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    background: #8a2be2; /* 연보라 배경 */
+    color: #fff; /* 흰 글씨 */
+    font-size: 1rem; /* 보통 글씨 */
+    cursor: pointer; /* 마우스 올리면 손가락 모양 */
+    transition: background 0.2s, transform 0.2s; /* 배경, 크기 애니메이션 */
 }
+/* 퀴즈 버튼 호버 */
 .quiz-btn:hover {
-    background: #6a0dad;
-    transform: scale(1.05);
+    background: #6a0dad; /* 진한 보라 */
+    transform: scale(1.05); /* 5% 커짐 */
 }
+/* 퀴즈 종료 버튼 */
 .quiz-quit {
-    background: #eee;
-    color: #6a0dad;
+    background: #eee; /* 연회색 배경 */
+    color: #6a0dad; /* 보라색 글씨 */
 }
+/* 퀴즈 종료 버튼 호버 */
 .quiz-quit:hover {
-    background: #ffe066;
-    color: #222;
+    background: #ffe066; /* 노란 배경 */
+    color: #222; /* 거의 검정 글씨 */
 }
+/* 퀴즈 결과 메시지 */
 .quiz-result-msg {
-    min-height: 24px;
-    font-weight: bold;
-    margin-top: 8px;
+    min-height: 24px; /* 최소 높이 */
+    font-weight: bold; /* 굵게 */
+    margin-top: 8px; /* 위쪽 여백 */
 }
+/* 퀴즈 진행률 */
 .quiz-progress {
-    font-size: 0.95rem;
-    color: #888;
-    margin-bottom: 8px;
+    font-size: 0.95rem; /* 약간 작은 글씨 */
+    color: #888; /* 연한 회색 */
+    margin-bottom: 8px; /* 아래쪽 여백 */
 }
 
-/* 달력 css */
+/* 달력 섹션 */
 .calendar-section {
-    max-width: 420px;
-    margin: 32px auto 0 auto;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 16px rgba(106,13,173,0.08);
-    padding: 24px 16px 32px 16px;
+    max-width: 420px; /* 최대 너비 */
+    margin: 32px auto 0 auto; /* 위 32px, 좌우 가운데 */
+    background: #fff; /* 흰 배경 */
+    border-radius: 16px; /* 모서리 둥글게 */
+    box-shadow: 0 2px 16px rgba(106,13,173,0.08); /* 연보라 그림자 */
+    padding: 24px 16px 32px 16px; /* 안쪽 여백 */
 }
+/* 달력 테이블 */
 .simple-calendar {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Gowun Dodum', sans-serif;
-    background: #faf8ff;
+    width: 100%; /* 부모 영역 모두 차지 */
+    border-collapse: collapse; /* 테두리 겹치게 */
+    font-family: 'Gowun Dodum', sans-serif; /* 산세리프 폰트 */
+    background: #faf8ff; /* 연보라 배경 */
 }
+/* 달력 셀 */
 .simple-calendar th, .simple-calendar td {
-    border: 1px solid #e0e0e0;
-    width: 14.2%;
-    height: 38px;
-    text-align: center;
-    font-size: 1.05rem;
+    border: 1px solid #e0e0e0; /* 연한 회색 테두리 */
+    width: 14.2%; /* 7일 기준 100/7 */
+    height: 38px; /* 높이 */
+    text-align: center; /* 가운데 정렬 */
+    font-size: 1.05rem; /* 약간 큰 글씨 */
 }
+/* 달력 요일 헤더 */
 .simple-calendar th {
-    background: #f3eaff;
-    color: #6a0dad;
+    background: #f3eaff; /* 연보라 배경 */
+    color: #6a0dad; /* 보라색 글씨 */
 }
+/* 오늘 날짜 셀 */
 .simple-calendar td.today {
-    background: #ffe066;
-    color: #6a0dad;
-    font-weight: bold;
-    border: 2px solid #8a2be2;
+    background: #ffe066; /* 노란 배경 */
+    color: #6a0dad; /* 보라색 글씨 */
+    font-weight: bold; /* 굵게 */
+    border: 2px solid #8a2be2; /* 진한 보라 테두리 */
+}
+
+/* 반응형 스타일 */
+/* 모바일: 600px 이하 */
+@media (max-width: 600px) {
+    /* 달력 셀: 작고 컴팩트하게 */
+    .simple-calendar th, .simple-calendar td {
+        font-size: 0.92rem;      /* 작은 글씨 */
+        height: 26px;            /* 낮은 높이 */
+        padding: 2px 0;          /* 위아래 여백 */
+    }
+    /* 메인 미디어: 꽉 차게, 둥글게 */
+    .media-main iframe, .media-main img {
+        width: 100%;             /* 부모 영역 모두 차지 */
+        height: 180px;           /* 낮은 높이 */
+        border-radius: 12px;     /* 모서리 둥글게 */
+        box-shadow: 0 2px 8px rgba(106,13,173,0.10); /* 연보라 그림자 */
+    }
+    /* 사이드 이미지: 한 줄로, 여백 최소화 */
+    .media-side-img {
+        width: 100%;             /* 부모 영역 모두 차지 */
+        padding: 6px;            /* 안쪽 여백 */
+        border-radius: 10px;     /* 모서리 둥글게 */
+        box-shadow: 0 1px 6px rgba(106,13,173,0.06); /* 연보라 그림자 */
+        margin-bottom: 12px;     /* 아래쪽 여백 */
+    }
+    .media-side-img img {
+        height: 120px;           /* 낮은 높이 */
+        border-radius: 8px;      /* 모서리 둥글게 */
+    }
+    /* 미디어 행: 세로 배치 */
+    .media-row {
+        flex-direction: column;  /* 세로 정렬 */
+        gap: 16px;               /* 간격 */
+    }
+    .media-side-horizontal {
+        flex-direction: column;  /* 세로 정렬 */
+        gap: 8px;                /* 간격 */
+    }
+    .navbar ul {
+        justify-content: center; /* 가운데 정렬 */
+        width: 100%;             /* 부모 영역 모두 차지 */
+    }
+    .navbar a {
+        font-size: 1.08rem;      /* 약간 큰 글씨 */
+        letter-spacing: 0.03em;  /* 글자 간격 */
+        text-align: center;      /* 가운데 정렬 */
+        display: flex;           /* 가로 정렬 */
+        align-items: center;     /* 세로 중앙 */
+        justify-content: center; /* 가운데 정렬 */
+        min-width: 80px;         /* 최소 너비 */
+        height: 38px;            /* 높이 */
+        padding: 8px 12px;       /* 안쪽 여백 */
+    }
+}
+
+/* 태블릿: 601px ~ 1200px */
+@media (min-width: 601px) and (max-width: 1200px) {
+    /* 달력 셀: 적당한 크기 */
+    .simple-calendar th, .simple-calendar td {
+        font-size: 1rem;         /* 보통 글씨 */
+        height: 32px;            /* 중간 높이 */
+        padding: 3px 0;          /* 위아래 여백 */
+    }
+    /* 메인 미디어: 중간 크기, 그림자 강조 */
+    .media-main iframe, .media-main img {
+        width: 500px;            /* 중간 너비 */
+        height: 300px;           /* 중간 높이 */
+        border-radius: 14px;     /* 모서리 둥글게 */
+        box-shadow: 0 4px 16px rgba(106,13,173,0.10); /* 연보라 그림자 */
+    }
+    /* 사이드 이미지: 적당한 크기, 그림자 */
+    .media-side-img {
+        width: 220px;            /* 중간 너비 */
+        padding: 10px;           /* 안쪽 여백 */
+        border-radius: 12px;     /* 모서리 둥글게 */
+        box-shadow: 0 2px 10px rgba(106,13,173,0.08); /* 연보라 그림자 */
+        margin-bottom: 16px;     /* 아래쪽 여백 */
+    }
+    .media-side-img img {
+        height: 140px;           /* 중간 높이 */
+        border-radius: 8px;      /* 모서리 둥글게 */
+    }
+    /* 미디어 행: 가로 배치, 간격 조정 */
+    .media-row {
+        flex-direction: row;     /* 가로 정렬 */
+        gap: 20px;               /* 간격 */
+    }
+    .media-side-horizontal {
+        flex-direction: column;  /* 세로 정렬 */
+        gap: 10px;               /* 간격 */
+    }
+    .navbar ul {
+        justify-content: center; /* 가운데 정렬 */
+        width: 100%;             /* 부모 영역 모두 차지 */
+    }
+    .navbar a {
+        font-size: 1.08rem;      /* 약간 큰 글씨 */
+        letter-spacing: 0.03em;  /* 글자 간격 */
+        text-align: center;      /* 가운데 정렬 */
+        display: flex;           /* 가로 정렬 */
+        align-items: center;     /* 세로 중앙 */
+        justify-content: center; /* 가운데 정렬 */
+        min-width: 90px;         /* 최소 너비 */
+        height: 40px;            /* 높이 */
+        padding: 10px 18px;      /* 안쪽 여백 */
+    }
+}
+
+/* 데스크탑: 1201px 이상 */
+@media (min-width: 1201px) {
+    /* 달력 셀: 넉넉하고 또렷하게 */
+    .simple-calendar th, .simple-calendar td {
+        font-size: 1.08rem;      /* 약간 큰 글씨 */
+        height: 40px;            /* 높은 높이 */
+        padding: 4px 0;          /* 위아래 여백 */
+    }
+    /* 메인 미디어: 크게, 그림자 강조 */
+    .media-main iframe, .media-main img {
+        width: 750px;            /* 큰 너비 */
+        height: 450px;           /* 큰 높이 */
+        border-radius: 18px;     /* 모서리 둥글게 */
+        box-shadow: 0 6px 24px rgba(106,13,173,0.12); /* 진한 연보라 그림자 */
+    }
+    /* 사이드 이미지: 넓고 여유롭게 */
+    .media-side-img {
+        width: 380px;            /* 큰 너비 */
+        padding: 18px;           /* 안쪽 여백 */
+        border-radius: 16px;     /* 모서리 둥글게 */
+        box-shadow: 0 4px 18px rgba(106,13,173,0.10); /* 연보라 그림자 */
+        margin-bottom: 20px;     /* 아래쪽 여백 */
+    }
+    .media-side-img img {
+        height: 180px;           /* 큰 높이 */
+        border-radius: 10px;     /* 모서리 둥글게 */
+    }
+    /* 미디어 행: 넓은 간격 */
+    .media-row {
+        flex-direction: row;     /* 가로 정렬 */
+        gap: 32px;               /* 간격 */
+    }
+    .media-side-horizontal {
+        flex-direction: column;  /* 세로 정렬 */
+        gap: 14px;               /* 간격 */
+    }
+    .navbar ul {
+        justify-content: center; /* 가운데 정렬 */
+        width: 100%;             /* 부모 영역 모두 차지 */
+    }
+    .navbar a {
+        font-size: 1.1rem;       /* 더 큰 글씨 */
+        letter-spacing: 0.04em;  /* 글자 간격 */
+        text-align: center;      /* 가운데 정렬 */
+        display: flex;           /* 가로 정렬 */
+        align-items: center;     /* 세로 중앙 */
+        justify-content: center; /* 가운데 정렬 */
+        min-width: 100px;        /* 최소 너비 */
+        height: 44px;            /* 높이 */
+        padding: 12px 24px;      /* 안쪽 여백 */
+    }
 }

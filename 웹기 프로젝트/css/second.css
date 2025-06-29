@@ -1,164 +1,200 @@
 .culture-card-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-    justify-content: center;
-    margin: 40px auto;
-    max-width: 800px;
+    display: flex; /* 가로로 카드 나열 */
+    flex-wrap: wrap; /* 줄 바꿈 허용 */
+    gap: 32px; /* 카드 사이 간격 */
+    justify-content: center; /* 가운데 정렬 */
+    margin: 40px auto; /* 위아래 40px, 좌우 가운데 */
+    max-width: 800px; /* 최대 너비 제한 */
 }
 
 .culture-card-flip {
-    width: 220px;
-    height: 260px;
-    perspective: 1000px;
-    cursor: pointer;
-    flex: 0 0 220px;
-    box-sizing: border-box;
+    width: 220px; /* 카드 너비 */
+    height: 260px; /* 카드 높이 */
+    cursor: pointer; /* 마우스 올리면 손가락 모양 */
+    flex: 0 0 220px; /* 크기 고정 */
+    box-sizing: border-box; /* 패딩, 테두리 포함 크기 계산 */
+    position: relative; /* 바로 아래 .culture-card-inner가 이 요소의 안에서 겹치기 배치가 가능하도록 기준점 역할 */
 }
 
 .culture-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.7s cubic-bezier(0.4,2,0.6,1);
-    transform-style: preserve-3d;
+    width: 100%; /* 바깥쪽 .culture-card-flip의 너비와 같게 */
+    height: 100%; /* 바깥쪽 .culture-card-flip의 높이와 같게 */
+    position: relative; /* 이 안에 있는 .culture-card-front, .culture-card-back가 겹쳐질 때 기준점 역할 */
+    /* 3D, transform-style, transition 제거 */
 }
 
-.culture-card-flip.flipped .culture-card-inner {
-    transform: rotateY(180deg);
-}
-
+/* 카드 앞면, 뒷면 공통 스타일 */
 .culture-card-front,
 .culture-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(106,13,173,0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 18px 10px 14px 10px;
-    text-align: center;
-    box-sizing: border-box;
-    overflow: hidden;
+    position: absolute; /* 이 요소들은 바로 바깥쪽 .culture-card-inner를 기준으로 겹쳐서 배치됨 */
+    width: 100%; /* .culture-card-inner의 너비와 같게 */
+    height: 100%; /* .culture-card-inner의 높이와 같게 */
+    background: #fff; /* 흰 배경 */
+    border-radius: 16px; /* 모서리 둥글게 */
+    box-shadow: 0 2px 12px rgba(106,13,173,0.08); /* 연보라 그림자 */
+    display: flex; /* 내부 요소 세로 정렬 */
+    flex-direction: column; /* 위에서 아래로 */
+    align-items: center; /* 가운데 정렬 */
+    justify-content: flex-start; /* 위쪽 정렬 */
+    padding: 18px 10px 14px 10px; /* 안쪽 여백 */
+    text-align: center; /* 텍스트 가운데 */
+    box-sizing: border-box; /* 패딩, 테두리 포함 크기 계산 */
+    overflow: hidden; /* 넘치는 내용 숨김 */
+    top: 0; /* .culture-card-inner의 위쪽에서 시작 */
+    left: 0; /* .culture-card-inner의 왼쪽에서 시작 */
+    transition: opacity 0.3s; /* 투명도 전환 애니메이션 */
 }
 
-.culture-card-front img {
-    width: 80px;
-    height: 54px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1.5px solid #e0c3fc;
-    margin-bottom: 8px;
+/* 카드 앞면: 기본적으로 보임 */
+.culture-card-front {
+    opacity: 1; /* 완전히 보임 */
+    z-index: 2; /* 뒷면보다 위에 위치 */
 }
 
-.culture-card-country {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #7c3aed;
-    margin-bottom: 4px;
-}
-
-.culture-card-info {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0 0;
-    width: 100%;
-    text-align: left;
-    font-size: 0.97rem;
-    color: #444;
-    font-family: 'Gowun Dodum', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
-    box-sizing: border-box;
-    word-break: keep-all;
-}
-.culture-card-info li {
-    margin-bottom: 4px;
-    padding-left: 8px;
-    text-indent: -4px;
-}
-.culture-card-info b {
-    color: #7c3aed;
-    font-weight: 600;
-}
-
+/* 카드 뒷면: 기본적으로 안 보임 */
 .culture-card-back {
-    transform: rotateY(180deg);
+    opacity: 0; /* 투명(안 보임) */
+    z-index: 1; /* 앞면보다 아래 */
 }
 
-.culture-card-back img {
-    width: 80px;
-    height: 48px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1.5px solid #e0c3fc;
-    margin-bottom: 8px;
+/* 카드가 뒤집혔을 때: 앞면 숨기고 뒷면 보이게 */
+.culture-card-flip.flipped .culture-card-front {
+    opacity: 0; /* 앞면 숨김 */
+    z-index: 1; /* 아래로 */
+}
+.culture-card-flip.flipped .culture-card-back {
+    opacity: 1; /* 뒷면 보임 */
+    z-index: 2; /* 위로 */
 }
 
-.culture-card-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #222;
-    margin-bottom: 4px;
+/* 카드 앞면 이미지 스타일 */
+.culture-card-front img {
+    width: 80px; /* 이미지 너비 */
+    height: 54px; /* 이미지 높이 */
+    object-fit: cover; /* 비율 유지하며 채우기 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    border: 1.5px solid #e0c3fc; /* 연보라 테두리 */
+    margin-bottom: 8px; /* 아래쪽 여백 */
 }
 
-.culture-card-desc {
-    font-size: 0.98rem;
-    color: #555;
-    padding: 0 14px;
-    box-sizing: border-box;
-    word-break: keep-all;
-    font-family: 'Gowun Dodum', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
-    margin-bottom: 0;
-    margin-top: 0;
-    overflow-wrap: break-word;
+/* 국가명 스타일 */
+.culture-card-country {
+    font-size: 1.1rem; /* 글씨 크기 */
+    font-weight: bold; /* 굵게 */
+    color: #7c3aed; /* 보라색 */
+    margin-bottom: 4px; /* 아래쪽 여백 */
 }
 
-.culture-card-images {
-    display: flex;
-    gap: 10px;
-    justify-content: center; 
-    align-items: center;
-    margin-bottom: 14px;
-}
-
-.culture-flag {
-    width: 48px;
-    height: 32px;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 1.5px solid #e0c3fc;
-    background: #fff;
-}
-
-.culture-heritage {
-    width: 80px;
-    height: 48px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1.5px solid #e0c3fc;
-    background: #fff;
-}
-
+/* 카드 정보 리스트(앞면) */
 .culture-card-info {
-    list-style: none;
-    padding: 0 0 0 0;
-    margin: 10px 0 0 0;
-    width: 100%;
-    text-align: left;
-    font-size: 0.97rem;
-    color: #444;
-    font-family: 'Gowun Dodum', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    list-style: none; /* 리스트 앞 점 없음 */
+    padding: 0; /* 안쪽 여백 없음 */
+    margin: 10px 0 0 0; /* 위쪽 10px, 나머지 0 */
+    width: 100%; /* 이 스타일이 적용된 요소의 바깥쪽(카드)와 같게 */
+    text-align: left; /* 왼쪽 정렬 */
+    font-size: 0.97rem; /* 글씨 크기 */
+    color: #444; /* 진한 회색 */
+    font-family: 'Gowun Dodum', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; /* 한글/영문 폰트 */
+    box-sizing: border-box; /* 패딩, 테두리 포함 크기 계산 */
+    word-break: keep-all; /* 단어 단위 줄바꿈 */
 }
+
+/* 카드 정보 리스트 항목(앞면) */
 .culture-card-info li {
-    margin-bottom: 4px;
-    padding-left: 8px;
-    text-indent: -4px;
+    margin-bottom: 4px; /* 아래쪽 여백 */
+    padding-left: 8px; /* 왼쪽 여백 */
+    text-indent: -4px; /* 첫 글자만 살짝 왼쪽 */
 }
+
+/* 카드 정보 강조(b 태그) */
 .culture-card-info b {
-    color: #7c3aed;
-    font-weight: 600;
+    color: #7c3aed; /* 보라색 */
+    font-weight: 600; /* 굵게 */
+}
+
+/* 카드 뒷면 이미지 스타일 */
+.culture-card-back img {
+    width: 80px; /* 이미지 너비 */
+    height: 48px; /* 이미지 높이 */
+    object-fit: cover; /* 비율 유지하며 채우기 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    border: 1.5px solid #e0c3fc; /* 연보라 테두리 */
+    margin-bottom: 8px; /* 아래쪽 여백 */
+}
+
+/* 카드 뒷면 제목 */
+.culture-card-title {
+    font-size: 1.1rem; /* 글씨 크기 */
+    font-weight: 600; /* 굵게 */
+    color: #222; /* 거의 검정 */
+    margin-bottom: 4px; /* 아래쪽 여백 */
+}
+
+/* 카드 뒷면 설명 */
+.culture-card-desc {
+    font-size: 0.98rem; /* 글씨 크기 */
+    color: #555; /* 중간 회색 */
+    padding: 0 14px; /* 좌우 여백 */
+    box-sizing: border-box; /* 패딩, 테두리 포함 크기 계산 */
+    word-break: keep-all; /* 단어 단위 줄바꿈 */
+    font-family: 'Gowun Dodum', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; /* 한글/영문 폰트 */
+    margin-bottom: 0; /* 아래쪽 여백 없음 */
+    margin-top: 0; /* 위쪽 여백 없음 */
+    overflow-wrap: break-word; /* 단어가 길면 줄바꿈 */
+}
+
+/* 카드 뒷면 여러 이미지(유산 등) */
+.culture-card-images {
+    display: flex; /* 가로 정렬 */
+    gap: 10px; /* 이미지 사이 간격 */
+    justify-content: center; /* 가운데 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    margin-bottom: 14px; /* 아래쪽 여백 */
+}
+
+/* 국기 이미지 스타일 */
+.culture-flag {
+    width: 48px; /* 너비 */
+    height: 32px; /* 높이 */
+    object-fit: cover; /* 비율 유지하며 채우기 */
+    border-radius: 6px; /* 모서리 둥글게 */
+    border: 1.5px solid #e0c3fc; /* 연보라 테두리 */
+    background: #fff; /* 흰 배경 */
+}
+
+/* 카드 뒷면 이미지, 문화유산 이미지 스타일 */
+.culture-card-back img,
+.culture-heritage {
+    width: 110px; /* 너비 */
+    height: 80px; /* 높이 */
+    object-fit: cover; /* 비율 유지하며 채우기 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    border: 1.5px solid #e0c3fc; /* 연보라 테두리 */
+    margin-bottom: 8px; /* 아래쪽 여백 */
+    background: #fff; /* 흰 배경 */
+}
+
+/* 카드 정보 리스트(중복, 혹시 다른 곳에서 쓸 수도 있음) */
+.culture-card-info {
+    list-style: none; /* 리스트 앞 점 없음 */
+    padding: 0 0 0 0; /* 안쪽 여백 없음 */
+    margin: 10px 0 0 0; /* 위쪽 10px, 나머지 0 */
+    width: 100%; /* 이 스타일이 적용된 요소의 바깥쪽(카드)와 같게 */
+    text-align: left; /* 왼쪽 정렬 */
+    font-size: 0.97rem; /* 글씨 크기 */
+    color: #444; /* 진한 회색 */
+    font-family: 'Gowun Dodum', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; /* 한글/영문 폰트 */
+}
+
+/* 카드 정보 리스트 항목(중복) */
+.culture-card-info li {
+    margin-bottom: 4px; /* 아래쪽 여백 */
+    padding-left: 8px; /* 왼쪽 여백 */
+    text-indent: -4px; /* 첫 글자만 살짝 왼쪽 */
+}
+
+/* 카드 정보 강조(b 태그, 중복) */
+.culture-card-info b {
+    color: #7c3aed; /* 보라색 */
+    font-weight: 600; /* 굵게 */
 }

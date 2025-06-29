@@ -68,11 +68,35 @@
     <div class="calendar-section">
         <h3 style="text-align:center; margin:24px 0 8px 0;">📅 다문화 행사 달력</h3>
         <div id="calendar"></div>
+        <!-- 일정 데이터 JSON을 HTML에 직접 작성 -->
+    <script type="application/json" id="calendar-events-data">
+        {
+            "2025-03-01": ["삼일절"],
+            "2025-05-05": ["어린이날"],
+            "2025-06-06": ["현충일"],
+            "2025-08-15": ["광복절"],
+            "2025-10-03": ["개천절"],
+            "2025-12-25": ["크리스마스"]
+        }
+        </script>
     </div>
     </main>
     
     <footer>
-        <!-- 개인정보 처리방침 -->
+    <hr>
+    <p>
+        <a href="https://www.pipc.go.kr/np/default/page.do?mCode=H010000000">
+            개인정보 처리방침
+        </a>
+        | 
+        <a href="https://www.law.go.kr/lsSc.do?menuId=1&subMenuId=15&query=%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95#undefined">
+            저작권보호정책
+        </a>
+        | 이용약관
+    </p>
+    <p>(43010) 대구광역시 달성군 구지면 창리로11길 93</p>
+    <p>전화: 053-123-4567 | 팩스: 053-123-4568</p>
+    <p>이메일: sp_cy12@dgsw.hs.kr</p>
     </footer>
 
     <script src="../js/main.js"></script>
@@ -102,6 +126,5 @@
     location.href = 'main.html';
 }
 window.onload = checkLoginStatus;
-window.onload = popupPage();
     </script>
 </body>

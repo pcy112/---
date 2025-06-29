@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Diphylleia&family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=Grandiflora+One&family=Nanum+Brush+Script&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -21,7 +23,6 @@
             </div>
         </div>
         <nav class="navbar">
-            <!-- 네비게이션 메뉴가 있다면 여기에 추가 -->
             <ul>
                 <li><a href="#" onclick="homePage()">홈</a></li>
                 <li><a href="#" onclick="secondPage()">나라별 문화 카드</a></li>
@@ -31,12 +32,12 @@
                 <li><a href="#" onclick="guitarPage()">기타</a></li>
             </ul>
         </nav>
-        <hr>
 
     </header>
 
     <main>
-
+        <div id="random-word-list"></div>
+        <div id="random-word"></div>
     </main>
     
     <footer>
@@ -46,22 +47,6 @@
     
     <script src="../js/main.js"></script>
     <script>
-        function checkLoginStatus() {
-            const authBtns = document.getElementById('auth-btns');
-            const user = localStorage.getItem('user');
-            if (user) {
-                // 로그인 상태: 로그아웃 버튼만 표시
-                authBtns.innerHTML = `<button type="button" onclick="logout()">로그아웃</button>`;
-            } else {
-                // 비로그인 상태: 로그인/회원가입 버튼 표시
-                authBtns.innerHTML = `
-                    <button type="button" onclick="location.href='login.html'">로그인</button>
-                    <button type="button" onclick="location.href='signup.html'">회원가입</button>
-                `;
-            }
-        }
-    </script>
-    <script>
         // 로그아웃 함수 예시
         function logout() {
             localStorage.removeItem('user');
@@ -69,5 +54,148 @@
 }
 window.onload = checkLoginStatus;
     </script>
+    <script type="application/json" id="foreign-words-data">
+        [
+        { "country": "한국어", "word": "사랑", "meaning": "love", "pronunciation": "sarang" },
+    { "country": "한국어", "word": "친구", "meaning": "friend", "pronunciation": "chingu" },
+    { "country": "한국어", "word": "학교", "meaning": "school", "pronunciation": "hakgyo" },
+    { "country": "한국어", "word": "가족", "meaning": "family", "pronunciation": "gajok" },
+    { "country": "한국어", "word": "음식", "meaning": "food", "pronunciation": "eumsik" },
+
+    { "country": "일본어", "word": "愛", "meaning": "사랑", "pronunciation": "아이" },
+    { "country": "일본어", "word": "友達", "meaning": "친구", "pronunciation": "토모다치" },
+    { "country": "일본어", "word": "学校", "meaning": "학교", "pronunciation": "갓코" },
+    { "country": "일본어", "word": "家族", "meaning": "가족", "pronunciation": "카조쿠" },
+    { "country": "일본어", "word": "食べ物", "meaning": "음식", "pronunciation": "타베모노" },
+
+    { "country": "중국어", "word": "爱", "meaning": "사랑", "pronunciation": "아이" },
+    { "country": "중국어", "word": "朋友", "meaning": "친구", "pronunciation": "펑요우" },
+    { "country": "중국어", "word": "学校", "meaning": "학교", "pronunciation": "쉐샤오" },
+    { "country": "중국어", "word": "家人", "meaning": "가족", "pronunciation": "지아런" },
+    { "country": "중국어", "word": "食物", "meaning": "음식", "pronunciation": "스우" },
+
+    { "country": "영어", "word": "love", "meaning": "사랑", "pronunciation": "러브" },
+    { "country": "영어", "word": "friend", "meaning": "친구", "pronunciation": "프렌드" },
+    { "country": "영어", "word": "school", "meaning": "학교", "pronunciation": "스쿨" },
+    { "country": "영어", "word": "family", "meaning": "가족", "pronunciation": "패밀리" },
+    { "country": "영어", "word": "food", "meaning": "음식", "pronunciation": "푸드" },
+
+    { "country": "프랑스어", "word": "amour", "meaning": "사랑", "pronunciation": "아무르" },
+    { "country": "프랑스어", "word": "ami", "meaning": "친구", "pronunciation": "아미" },
+    { "country": "프랑스어", "word": "école", "meaning": "학교", "pronunciation": "에꼴" },
+    { "country": "프랑스어", "word": "famille", "meaning": "가족", "pronunciation": "파미유" },
+    { "country": "프랑스어", "word": "nourriture", "meaning": "음식", "pronunciation": "누리튀르" },
+
+    { "country": "독일어", "word": "liebe", "meaning": "사랑", "pronunciation": "리베" },
+    { "country": "독일어", "word": "freund", "meaning": "친구", "pronunciation": "프로인트" },
+    { "country": "독일어", "word": "schule", "meaning": "학교", "pronunciation": "슐레" },
+    { "country": "독일어", "word": "familie", "meaning": "가족", "pronunciation": "파밀리예" },
+    { "country": "독일어", "word": "essen", "meaning": "음식", "pronunciation": "에센" },
+
+    { "country": "스페인어", "word": "amor", "meaning": "사랑", "pronunciation": "아모르" },
+    { "country": "스페인어", "word": "amigo", "meaning": "친구", "pronunciation": "아미고" },
+    { "country": "스페인어", "word": "escuela", "meaning": "학교", "pronunciation": "에스쿠엘라" },
+    { "country": "스페인어", "word": "familia", "meaning": "가족", "pronunciation": "파밀리아" },
+    { "country": "스페인어", "word": "comida", "meaning": "음식", "pronunciation": "코미다" },
+
+    { "country": "이탈리아어", "word": "amore", "meaning": "사랑", "pronunciation": "아모레" },
+    { "country": "이탈리아어", "word": "amico", "meaning": "친구", "pronunciation": "아미코" },
+    { "country": "이탈리아어", "word": "scuola", "meaning": "학교", "pronunciation": "스쿠올라" },
+    { "country": "이탈리아어", "word": "famiglia", "meaning": "가족", "pronunciation": "파밀리아" },
+    { "country": "이탈리아어", "word": "cibo", "meaning": "음식", "pronunciation": "치보" },
+
+    { "country": "러시아어", "word": "любовь", "meaning": "사랑", "pronunciation": "류보프" },
+    { "country": "러시아어", "word": "друг", "meaning": "친구", "pronunciation": "드루크" },
+    { "country": "러시아어", "word": "школа", "meaning": "학교", "pronunciation": "슈콜라" },
+    { "country": "러시아어", "word": "семья", "meaning": "가족", "pronunciation": "셈야" },
+    { "country": "러시아어", "word": "еда", "meaning": "음식", "pronunciation": "예다" },
+
+    { "country": "포르투갈어", "word": "amor", "meaning": "사랑", "pronunciation": "아모르" },
+    { "country": "포르투갈어", "word": "amigo", "meaning": "친구", "pronunciation": "아미구" },
+    { "country": "포르투갈어", "word": "escola", "meaning": "학교", "pronunciation": "이스콜라" },
+    { "country": "포르투갈어", "word": "família", "meaning": "가족", "pronunciation": "파밀리아" },
+    { "country": "포르투갈어", "word": "comida", "meaning": "음식", "pronunciation": "코미다" },
+
+    { "country": "태국어", "word": "ความรัก", "meaning": "사랑", "pronunciation": "콰암락" },
+    { "country": "태국어", "word": "เพื่อน", "meaning": "친구", "pronunciation": "프언" },
+    { "country": "태국어", "word": "โรงเรียน", "meaning": "학교", "pronunciation": "롱리얀" },
+    { "country": "태국어", "word": "ครอบครัว", "meaning": "가족", "pronunciation": "크롭크루아" },
+    { "country": "태국어", "word": "อาหาร", "meaning": "음식", "pronunciation": "아한" },
+
+    { "country": "베트남어", "word": "tình yêu", "meaning": "사랑", "pronunciation": "띤 이우" },
+    { "country": "베트남어", "word": "bạn bè", "meaning": "친구", "pronunciation": "반 베" },
+    { "country": "베트남어", "word": "trường học", "meaning": "학교", "pronunciation": "쯔엉 혹" },
+    { "country": "베트남어", "word": "gia đình", "meaning": "가족", "pronunciation": "자 딩" },
+    { "country": "베트남어", "word": "thức ăn", "meaning": "음식", "pronunciation": "트억 안" },
+
+    { "country": "터키어", "word": "aşk", "meaning": "사랑", "pronunciation": "아슈크" },
+    { "country": "터키어", "word": "arkadaş", "meaning": "친구", "pronunciation": "아르카다쉬" },
+    { "country": "터키어", "word": "okul", "meaning": "학교", "pronunciation": "오쿨" },
+    { "country": "터키어", "word": "aile", "meaning": "가족", "pronunciation": "아이레" },
+    { "country": "터키어", "word": "yemek", "meaning": "음식", "pronunciation": "예멕" },
+
+    { "country": "인도어", "word": "प्यार", "meaning": "사랑", "pronunciation": "피야르" },
+    { "country": "인도어", "word": "दोस्त", "meaning": "친구", "pronunciation": "도스트" },
+    { "country": "인도어", "word": "स्कूल", "meaning": "학교", "pronunciation": "스쿨" },
+    { "country": "인도어", "word": "परिवार", "meaning": "가족", "pronunciation": "파리와르" },
+    { "country": "인도어", "word": "भोजन", "meaning": "음식", "pronunciation": "보잔" },
+
+    { "country": "핀란드어", "word": "rakkaus", "meaning": "사랑", "pronunciation": "라카우스" },
+    { "country": "핀란드어", "word": "ystävä", "meaning": "친구", "pronunciation": "위스타바" },
+    { "country": "핀란드어", "word": "koulu", "meaning": "학교", "pronunciation": "코울루" },
+    { "country": "핀란드어", "word": "perhe", "meaning": "가족", "pronunciation": "페르헤" },
+    { "country": "핀란드어", "word": "ruoka", "meaning": "음식", "pronunciation": "루오카" }
+        ]
+        </script>
+        <script>
+            let usedIndexes = [];
+            let timer = null;
+            
+            function startWordStack() {
+                clearTimeout(timer);
+                usedIndexes = [];
+            
+                const dataScript = document.getElementById('foreign-words-data');
+                if (!dataScript) {
+                    document.getElementById('random-word-list').innerHTML = '';
+                    return;
+                }
+                const words = JSON.parse(dataScript.textContent);
+            
+                const out = document.getElementById('random-word-list');
+                out.innerHTML = '';
+            
+                function addWord() {
+                    if (usedIndexes.length === words.length) return; // 모든 단어를 다 쌓았으면 멈춤
+                    let idx;
+                    do {
+                        idx = Math.floor(Math.random() * words.length);
+                    } while (usedIndexes.includes(idx) && usedIndexes.length < words.length);
+                    usedIndexes.push(idx);
+                    const wordObj = words[idx];
+                    // 단어 쌓기
+                    const div = document.createElement('div');
+                    div.style.padding = '12px';
+                    div.style.border = '1px solid #ccc';
+                    div.style.margin = '12px 0';
+                    div.innerHTML = `<span style="color:blue;">${wordObj.word}</span>
+                        <span style="color:green;">[${wordObj.pronunciation}]</span><br>
+                        <span style="color:gray;">(뜻: ${wordObj.meaning})</span>`;
+                    out.appendChild(div);
+            
+                    // 다음 단어 추가 예약 (5~7초 랜덤)
+                    if (usedIndexes.length < words.length) {
+                        const nextDelay = 5000 + Math.floor(Math.random() * 2000); // 5000~7000ms
+                        timer = setTimeout(addWord, nextDelay);
+                    }
+                }
+                addWord();
+            }
+            
+            // 페이지 로드 시 바로 시작
+            document.addEventListener('DOMContentLoaded', function() {
+                startWordStack();
+            });
+            </script>
 </body>
 </html>
