@@ -1,20 +1,31 @@
 function homePage(){
-    //홈페이지를 가져옴
+    //홈페이지 페이지로 이동
     location.href = "main.html";
 }
 function secondPage(){
-    //두번째 페이지를 가져옴
+    //나라별 문화 카드 페이지로 이동
     location.href = "second.html";
 }
 function quizPage(){
-    //세번째 페이지를 가져옴
+    //퀴즈 페이지로 이동
     location.href = "quiz.html";
 }
 function fourthPage(){
-    //네번째 페이지를 가져옴
+    //만남의 광장 페이지로 이동
     location.href = "fourth.html";
 }
 
+function commentPage(){
+    // 의견나누기 페이지로 이동
+    window.location.href = "comment.html";
+}
+
+function guitarPage(){
+    // 기타 페이지로 이동
+    window.location.href = "guitar.html";
+}
+
+// 팝업 안내창
 function popupPage() {
     // sessionStorage에서 'popupShown' 값을 확인
     // if (sessionStorage.getItem('popupShown')) {
@@ -27,8 +38,13 @@ function popupPage() {
     // }
     window.open("popup.html","popup","width=400,height=300,scrollbars=yes");
 }
+function exPage(){
+    // 기타 페이지로 이동
+    window.location.href = "ex.html";
+}
+// 로그인, 회원가입, 로그아웃
 function login(){
-    window.location.href = "login.html";
+    window.location.href = "login.html"; 
 }
 function signUp(){
     window.location.href = "signup.html";
@@ -38,13 +54,6 @@ function logout(){
     // 예를 들어, 세션 스토리지에서 사용자 정보를 제거하고 홈 페이지로 이동
     localStorage.removeItem('user'); // 사용자 정보 제거
     window.location.href = "main.html"; // 홈 페이지로 이동
-}
-function commentPage(){
-    // 댓글 페이지로 이동
-    window.location.href = "comment.html";
-}
-function guitarPage(){
-    window.location.href = "guitar.html";
 }
 
 // 퀴즈 js
@@ -82,16 +91,17 @@ const quizData = [
     
 ];
 
-let quizOrder = [];
-let currentIdx = 0;
-let correctCount = 0;
-let wrongCount = 0;
-let quizLimit = 10; // 기본값 10문제
+let quizOrder = []; // 문제 순서
+let currentIdx = 0; // 현재 문제 인덱스
+let correctCount = 0; // 정답 개수
+let wrongCount = 0; // 오답 개수
+let quizLimit = 10; // 퀴즈 문제 수(기본: 10)
 
+// 퀴즈 시작 화면
 function showStartScreen() {
     const main = document.getElementById('quiz-main');
-    main.innerHTML = `
-        <div class="quiz-start-screen">
+    main.innerHTML = 
+        `<div class="quiz-start-screen">
             <h2>나라별 퀴즈</h2>
             <p>나라와 관련된 상식 퀴즈를 풀어보세요!</p>
             <div style="margin: 16px 0;">
@@ -106,8 +116,9 @@ function showStartScreen() {
                 </label>
             </div>
             <button id="start-btn" class="quiz-btn">퀴즈를 시작하겠습니까?</button>
-        </div>
-    `;
+        </div>`;
+    
+    // 시작 버튼 클릭 이벤트
     document.getElementById('start-btn').onclick = () => {
         // 선택된 문제 수 반영
         const selected = document.querySelector('input[name="quiz-limit"]:checked');
@@ -116,21 +127,23 @@ function showStartScreen() {
     };
 }
 
+// 퀴즈 시작
 function startQuiz() {
     quizOrder = quizData.slice().sort(() => Math.random() - 0.5).slice(0, quizLimit); // 무작위 섞고 제한만큼 자르기
-    currentIdx = 0;
-    correctCount = 0;
-    wrongCount = 0;
+    currentIdx = 0; // 현재 문제 인덱스 초기화
+    correctCount = 0; // 정답 개수 초기화
+    wrongCount = 0; // 오답 개수 초기화
     showQuiz();
 }
 
+// 현재 문제 화면 보여줌
 function showQuiz() {
     if (currentIdx >= quizOrder.length) {
-        showEndScreen();
+        showEndScreen(); // 모든 문제를 푼 경우 종료 화면 보여주기
         return;
     }
-    const q = quizOrder[currentIdx];
-    const main = document.getElementById('quiz-main');
+    const q = quizOrder[currentIdx]; // 현재 문제 정보
+    const main = document.getElementById('quiz-main'); 
     main.innerHTML = `
         <div class="quiz-question-box">
             <div class="quiz-progress">문제 ${currentIdx + 1} / ${quizOrder.length}</div>
@@ -143,14 +156,15 @@ function showQuiz() {
             <div id="result-msg" class="quiz-result-msg"></div>
         </div>
     `;
-    document.getElementById('submit-btn').onclick = checkAnswer;
-    document.getElementById('answer-input').focus();
+    document.getElementById('submit-btn').onclick = checkAnswer; // 제출 버튼 클릭 이벤트
+    document.getElementById('answer-input').focus(); // 입력창에 포커스
 }
 
+// 정답 체크, 결과 메시지
 function checkAnswer() {
-    const input = document.getElementById('answer-input').value.trim();
-    const correct = quizOrder[currentIdx].answer;
-    const msg = document.getElementById('result-msg');
+    const input = document.getElementById('answer-input').value.trim(); // 입력값 가져오기
+    const correct = quizOrder[currentIdx].answer; // 정답 가져오기
+    const msg = document.getElementById('result-msg'); // 결과 메시지 요소
     if (input === correct) {
         correctCount++;
         msg.textContent = "정답입니다!";
@@ -170,7 +184,7 @@ function checkAnswer() {
     }
 }
 
-function showEndScreen() {
+function showEndScreen() { // 퀴즈 종료 화면
     const main = document.getElementById('quiz-main');
     main.innerHTML = `
         <div class="quiz-end-screen">
@@ -180,118 +194,9 @@ function showEndScreen() {
             <button id="restart-btn" class="quiz-btn">다시 시작하기</button>
         </div>
     `;
-    document.getElementById('restart-btn').onclick = showStartScreen;
+    document.getElementById('restart-btn').onclick = showStartScreen; // 다시 시작 버튼 클릭 이벤트
 }
 
-window.onload = showStartScreen;
+window.onload = showStartScreen; // 페이지 로드 시 퀴즈 시작 화면 보여주기
 
 
-// 달력 js
-
-let calendarEvents = {};
-
-// 연, 월 상태 저장
-let calendarYear = 2025;
-let calendarMonth = 0; // 0: 1월
-
-// 달력 렌더링 함수
-function renderCalendar(year = calendarYear, month = calendarMonth) {
-    calendarYear = year;
-    calendarMonth = month;
-    const calendarEl = document.getElementById('calendar');
-    if (!calendarEl) return;
-
-    // 달력 헤더(월 이동 버튼)
-    let html = `
-        <div style="text-align:center; margin-bottom:8px;">
-            <button id="prev-month" style="margin-right:8px;">◀</button>
-            <span style="font-weight:bold;">${year}년 ${month + 1}월</span>
-            <button id="next-month" style="margin-left:8px;">▶</button>
-        </div>
-        <table class="simple-calendar" style="width:100%;text-align:center;">
-            <thead>
-                <tr>
-                    <th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>
-                </tr>
-            </thead>
-            <tbody><tr>
-    `;
-
-    const firstDay = new Date(year, month, 1).getDay();
-    const lastDate = new Date(year, month + 1, 0).getDate();
-
-    // 1일 전까지 빈칸
-    for (let i = 0; i < firstDay; i++) html += "<td></td>";
-
-    // 날짜 출력
-    for (let d = 1; d <= lastDate; d++) {
-        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-        const isToday = (year === new Date().getFullYear() && month === new Date().getMonth() && d === new Date().getDate());
-        html += `<td${isToday ? ' class="today"' : ''} data-date="${dateStr}" style="cursor:pointer;vertical-align:top;">${d}`;
-        // 일정 표시
-        if (calendarEvents[dateStr]) {
-            calendarEvents[dateStr].forEach(ev => {
-                html += `<div class="event" style="background:#ffe0b2; margin:2px 0; font-size:12px; border-radius:4px;">${ev}</div>`;
-            });
-        }
-        html += `</td>`;
-        if ((firstDay + d) % 7 === 0) html += "</tr><tr>";
-    }
-    html += "</tr></tbody></table>";
-
-    // 일정 입력 폼
-    html += `
-        <div style="margin-top:10px; text-align:center;">
-            <input type="date" id="event-date" value="${year}-${String(month + 1).padStart(2, '0')}-01" style="padding:2px;">
-            <input type="text" id="event-text" placeholder="일정 내용" style="padding:2px;">
-            <button id="add-event-btn">일정 추가</button>
-        </div>
-    `;
-
-    calendarEl.innerHTML = html;
-
-    // 월 이동 버튼 이벤트
-    document.getElementById('prev-month').onclick = () => {
-        let y = calendarYear, m = calendarMonth - 1;
-        if (m < 0) { y--; m = 11; }
-        renderCalendar(y, m);
-    };
-    document.getElementById('next-month').onclick = () => {
-        let y = calendarYear, m = calendarMonth + 1;
-        if (m > 11) { y++; m = 0; }
-        renderCalendar(y, m);
-    };
-
-    // 일정 추가 이벤트
-    document.getElementById('add-event-btn').onclick = () => {
-        const date = document.getElementById('event-date').value;
-        const text = document.getElementById('event-text').value.trim();
-        if (!date || !text) return alert('날짜와 일정을 입력하세요.');
-        if (!calendarEvents[date]) calendarEvents[date] = [];
-        calendarEvents[date].push(text);
-        renderCalendar(calendarYear, calendarMonth);
-    };
-
-    // 날짜 클릭 시 해당 날짜로 일정 입력란 날짜 변경
-    document.querySelectorAll('.simple-calendar td[data-date]').forEach(td => {
-        td.onclick = () => {
-            document.getElementById('event-date').value = td.dataset.date;
-        };
-    });
-}
-
-// 페이지가 모두 로드되면 2025년 1월 달력 표시
-document.addEventListener('DOMContentLoaded', function() {
-    renderCalendar(2025, 0);
-});
-// HTML에서 일정 데이터(JSON)를 읽어 calendarEvents에 할당
-const eventsScript = document.getElementById('calendar-events-data');
-if (eventsScript) {
-    try {
-        calendarEvents = JSON.parse(eventsScript.textContent);
-    } catch (e) {
-        calendarEvents = {};
-    }
-} else {
-    calendarEvents = {};
-}

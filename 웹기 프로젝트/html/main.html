@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- 문자 인코딩, 반응형 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>다문화 웹 페이지</title>
+    <!-- 메인, 퀴즈 CSS 및 폰트 -->
     <link rel="stylesheet" href="../css/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Diphylleia&family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=Nanum+Brush+Script&family=Sunflower:wght@300&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Diphylleia&family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=Grandiflora+One&family=Nanum+Brush+Script&family=Sunflower:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body onload="popupPage(); checkLoginStatus()">
+    <!-- 헤더에 로고, 검색, 로그인/회원가입, 네비게이션 있음 -->
     <header>
         <div class="header-row">
+            <!-- 홈 이동 -->
             <img class="logo-img" src="https://img.khan.co.kr/news/2023/01/12/l_2023011301000571200047071.jpg" alt="무지개" onclick="homePage()">
+            <!-- 검색 폼 -->
             <form class="search-form">
                 <input type="text" placeholder="검색어를 입력하세요">
                 <button type="submit">검색</button>
             </form>
+            <!-- 로그인, 회원가입 or 로그아웃 버튼 -->
             <div class="auth-btns" id="auth-btns">
-                <!-- 로그인 상태에 따라 버튼이 변경됩니다. -->
+                <!-- 로그인 상태에 따라 버튼 변경 -->
                 <button type="button" onclick="login()">로그인</button>
                 <button type="button" onclick="signUp()">회원가입</button>
             </div>
         </div>
+        <!-- 메뉴들 -->
             <nav class="navbar">
                 <ul>
                     <li><a href="#" onclick="homePage()">홈</a></li> 
@@ -42,19 +49,23 @@
     </header>
 
     <main>
+        <!-- 메인 미디어. 영상, 사진 이미지 -->
         <div class="media-row">
             <div class="media-main">
+                <!-- 영상 -->
                 <iframe src="https://www.youtube-nocookie.com/embed/qSOUiefcl1o?si=kSBXT05MMCnVrXue&amp;controls=0"
                     title="다문화 영상" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="media-side-horizontal">
                 <div class="media-side-img">
+                    <!-- 사진1 -->
                     <img src="https://www.djtimes.co.kr/news/photo/202310/102361_83646_4251.jpg" alt="다문화 축제">
                     <div class="media-meta">문화 소식</div>
                     <div class="media-title">다양한 문화가 어우러진 축제</div>
                     <div class="media-desc2">서로 다른 전통과 색깔이 한자리에 모여 새로운 꿈을 만들수 있어요!</div>
                     <div class="media-author">By <span>충남</span></div>
                 </div>
+                <!-- 사진2 -->
                 <div class="media-side-img">
                     <img src="https://cdn.knpnews.com/news/photo/201611/11925_7299_4555.jpg" alt="식사">
                     <div class="media-meta">문화 소식</div>
@@ -65,25 +76,65 @@
             </div>
         </div>
     </div>
-    <div class="calendar-section">
-        <h3 style="text-align:center; margin:24px 0 8px 0;">📅 다문화 행사 달력</h3>
-        <div id="calendar"></div>
-        <!-- 일정 데이터 JSON을 HTML에 직접 작성 -->
-    <script type="application/json" id="calendar-events-data">
-        {
-            "2025-03-01": ["삼일절"],
-            "2025-05-05": ["어린이날"],
-            "2025-06-06": ["현충일"],
-            "2025-08-15": ["광복절"],
-            "2025-10-03": ["개천절"],
-            "2025-12-25": ["크리스마스"]
-        }
-        </script>
-    </div>
+    
+    <!-- 달력 -->
+        <div class="calendar-container"> <h2 class="calendar-title">2025년 7월</h2> <table>
+            <thead>
+                <tr>
+                    <th class="sun">일</th> <th>월</th> <th>화</th> <th>수</th> <th>목</th> <th>금</th> <th class="sat">토</th> </tr>
+                </thead>
+                    <tbody>
+                    <tr>
+                        <td class="empty"></td> <td class="empty"></td> <td>1<span class="event event-yellow">교육활동비 신청 시작</span></td> <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31<span class="event event-yellow">교육활동비 신청 마감</span></td> <td class="empty"></td> <td class="empty"></td> </tr>
+                    <tr>
+                        <td colspan="7" class="full-row-event"> 
+                            <span class="event event-green">세계 음식 주간 (방학 전후)</span> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </main>
     
+    <!-- 정책, 주소, 연락처, 저작권 등등 -->
     <footer>
-    <hr>
     <p>
         <a href="https://www.pipc.go.kr/np/default/page.do?mCode=H010000000">
             개인정보 처리방침
@@ -99,17 +150,19 @@
     <p>이메일: sp_cy12@dgsw.hs.kr</p>
     </footer>
 
+    <!-- 로그인 상태 체크, 로그아웃 스크립트 -->
     <script src="../js/main.js"></script>
     <script>
+        // 로그인 상태 따라 버튼 변경
         function checkLoginStatus() {
             const authBtns = document.getElementById('auth-btns');
             const user = localStorage.getItem('user');
             if(authBtns){
                 if (user) {
-                    // 로그인 상태: 로그아웃 버튼만 표시
+                    // 로그인 시 로그아웃 버튼만 표시
                     authBtns.innerHTML = `<button type="button" onclick="logout()">로그아웃</button>`;
                 } else {
-                    // 비로그인 상태: 로그인/회원가입 버튼 표시
+                    // 로그인 안 했을 시 로그인/회원가입 버튼 표시
                     authBtns.innerHTML = `
                         <button type="button" onclick="location.href='login.html'">로그인</button>
                         <button type="button" onclick="location.href='signup.html'">회원가입</button>
@@ -120,7 +173,7 @@
         window.onload = checkLoginStatus;
     </script>
     <script>
-        // 로그아웃 함수 예시
+        // 로그아웃시 로컬스토리지에서 사용자 정보 제거 후 메인 페이지로 이동
         function logout() {
             localStorage.removeItem('user');
     location.href = 'main.html';
